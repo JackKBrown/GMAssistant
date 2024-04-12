@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="GMAssistant.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:GMAssistant"
+    xmlns:view="clr-namespace:GMAssistant.View"
+    Title="GMAssistant">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.TitleColor" Value="Aqua"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Aqua"/>
+            </Style>
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <FlyoutItem Title="All Sessions" Icon="cube.png">
+        <ShellContent Title="All Sessions" ContentTemplate="{DataTemplate view:AllSessions}" />
+    </FlyoutItem>
+    <FlyoutItem Title="All Encounters" Icon="cube.png">
+        <ShellContent Title="All Encounters" ContentTemplate="{DataTemplate view:AllEncounters}" />
+    </FlyoutItem>
+
+    <ShellContent Title="Alex"
+                  Icon="info.png"
+                  ContentTemplate="{DataTemplate view:MainPage}" />
+
+</Shell>

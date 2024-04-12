@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GMAssistant.View.EncounterPage"
+             xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             xmlns:model="clr-namespace:GMAssistant.Model"
+             x:DataType="viewmodel:EncounterViewModel"
+             Title="{Binding CurrentEncounter.Name}">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition />
+            <RowDefinition Height="80" />
+        </Grid.RowDefinitions>
+        <VerticalStackLayout Grid.Row="0">
+            <HorizontalStackLayout>
+                <Label Text="Name: " FontSize="24"/>
+                <Editor Margin="5" FontSize="24" Text="{Binding CurrentEncounter.Name}"/>
+            </HorizontalStackLayout>
+            <Label Text="Description: " FontSize="24"/>
+            <Editor Margin="5" Text="{Binding CurrentEncounter.Description}"/>
+        </VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Entities}" VerticalOptions="Fill" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Entity">
+                    <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                        <Label Text="{Binding Name}" FontSize="24" WidthRequest="200"/>
+                        <Label Text="{Binding Initiative}" FontSize="24" WidthRequest="200" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+        <HorizontalStackLayout Grid.Row="2">
+            <Button MaximumWidthRequest="900" MinimumWidthRequest="300" 
+                HorizontalOptions="CenterAndExpand" Text="New Encounter" 
+                 Margin="10" FontSize="24"  
+                Command="{Binding NewEnitityCommand}"
+                IsEnabled="{Binding IsNotBusy}"/>
+
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
