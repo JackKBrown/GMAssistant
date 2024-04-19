@@ -33,7 +33,7 @@ public partial class SessionViewModel:BaseViewModel
 		{
 			Name = "new Encounter",
 			Description = "Description",
-			SessionID = currentSession.ID
+			SessionID = CurrentSession.ID
 		};
 		await db.SaveEncounterAsync(encounter);
 		await GoToEncounterAsync(encounter);
@@ -50,16 +50,29 @@ public partial class SessionViewModel:BaseViewModel
 			});
 
 	}
+	public async Task SaveSession()
+	{
+		try
+		{
+			await db.SaveSessionAsync(CurrentSession);
+		}
+		catch (Exception ex)
+		{
+			Debug.WriteLine(ex);
+			await Shell.Current.DisplayAlert("error", $"Session error{ex.Message}", "ok");
+		}
+
+	}
 	
 	public async Task GetEncounters()
 	{
-		if(currentSession == null) { return; }
+		if(CurrentSession == null) { return; }
 		if (IsBusy) return;
 
 		try
 		{
 			IsBusy = true;
-			var sessionsTemp = await db.GetSessionEncounters(currentSession.ID);
+			var sessionsTemp = await db.GetSessionEncounters(CurrentSession.ID);
 			Debug.WriteLine($"SESSION ID is {sessionsTemp.Count}");
 			if (Encounters.Count != 0)
 				Encounters.Clear();
@@ -77,13 +90,13 @@ public partial class SessionViewModel:BaseViewModel
 	[RelayCommand]
 	async Task Displayinfo()
 	{
-		if (currentSession == null)
+		if (CurrentSession == null)
 		{
 			await Shell.Current.DisplayAlert("error", $"current session is null", "ok");
 		}
 		else
 		{
-			await Shell.Current.DisplayAlert("error", $"current session is not null {currentSession.Name}", "ok");
+			await Shell.Current.DisplayAlert("error", $"current session is not null {CurrentSession.Name}", "ok");
 
 		}
 	}

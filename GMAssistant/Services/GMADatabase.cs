@@ -24,26 +24,6 @@ namespace GMAssistant.Services
 			var sessionRes = await Database.CreateTableAsync<Session>();
 			var encounterRes = await Database.CreateTableAsync<Encounter>();
 			var entityRes = await Database.CreateTableAsync<Entity>();
-			//dummy data
-			//dummy data
-			
-			Session one = new Session
-			{
-				Description = "this is the description of session one",
-				Name = "numero uno"
-			};
-			await SaveSessionAsync(one);
-			Console.WriteLine($"INIT SESSION {one.ID}, {one.Name}");
-			Debug.WriteLine($"INIT SESSION {one.ID}, {one.Name}");
-
-			Encounter uno = new Encounter
-			{
-				Description = "this is the description of session one",
-				Name = "First Fight",
-				SessionID = one.ID
-			};
-			await SaveEncounterAsync(uno);
-			
 		}
 
 		//SESSION

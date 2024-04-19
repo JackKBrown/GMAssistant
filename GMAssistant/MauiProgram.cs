@@ -16,11 +16,11 @@ namespace GMAssistant
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+					fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FASolid");
 				});
 #if DEBUG
 			builder.Logging.AddDebug();
 #endif
-			builder.Services.AddSingleton<MainPage>();
 			builder.Services.AddSingleton<AllSessions>();
 			builder.Services.AddSingleton<AllEncounters>();
 			builder.Services.AddSingleton<GMADatabase>();

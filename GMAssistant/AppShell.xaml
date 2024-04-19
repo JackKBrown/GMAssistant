@@ -23,8 +23,4 @@
         <ShellContent Title="All Encounters" ContentTemplate="{DataTemplate view:AllEncounters}" />
     </FlyoutItem>
 
-    <ShellContent Title="Alex"
-                  Icon="info.png"
-                  ContentTemplate="{DataTemplate view:MainPage}" />
-
 </Shell>

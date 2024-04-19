@@ -3,41 +3,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GMAssistant.View.EncounterPage"
              xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             xmlns:converter="clr-namespace:GMAssistant.Converters"
              xmlns:model="clr-namespace:GMAssistant.Model"
              x:DataType="viewmodel:EncounterViewModel"
              Title="{Binding CurrentEncounter.Name}">
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition />
-            <RowDefinition Height="80" />
-        </Grid.RowDefinitions>
-        <VerticalStackLayout Grid.Row="0">
+    <ContentPage.Resources>
+        <converter:HitPointsConverter x:Key="HPCon"/>
+    </ContentPage.Resources>
+    <Grid>
+        <ScrollView Grid.Row="0">
+        <VerticalStackLayout >
             <HorizontalStackLayout>
                 <Label Text="Name: " FontSize="24"/>
                 <Editor Margin="5" FontSize="24" Text="{Binding CurrentEncounter.Name}"/>
             </HorizontalStackLayout>
             <Label Text="Description: " FontSize="24"/>
             <Editor Margin="5" Text="{Binding CurrentEncounter.Description}"/>
+            <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                <Label Text="Actor Name" FontSize="24" WidthRequest="200" HorizontalOptions="Center"/>
+                <Label Text="Init" FontSize="24" WidthRequest="100" HorizontalOptions="Center"/>
+                <Label Text="HP" FontSize="24" WidthRequest="100" HorizontalOptions="Center"/>
+                <Label Text="\" FontSize="24"/>
+                <Label Text="Max HP" FontSize="24" WidthRequest="100" HorizontalOptions="Center"/>
+                <Label Text="Conditions" FontSize="24" WidthRequest="180" HorizontalOptions="Center"/>
+                <Label Text="Info" FontSize="24" WidthRequest="60" HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+            <Line X2="{Binding Width, Source={RelativeSource Self}}" HorizontalOptions="Fill" StrokeThickness="2" Stroke="Gray" />
+            <CollectionView ItemsSource="{Binding Entities}" VerticalOptions="Fill">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Entity">
+                        <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                            <Editor Text="{Binding Name}" FontSize="24" WidthRequest="200"/>
+                            <Editor Text="{Binding Initiative}" FontSize="24" WidthRequest="100" />
+                            <Editor Text="{Binding CurrentHP}" FontSize="24" WidthRequest="100"/>
+                            <Label Text="\" FontSize="24"/>
+                            <Editor Text="{Binding MaxHP}" FontSize="24" WidthRequest="100"/>
+                            <Editor Text="{Binding Conditions}" FontSize="24" WidthRequest="200"/>
+                            <ImageButton WidthRequest="40" HeightRequest="40" CornerRadius="20"
+                                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=ShowInfoCommand}"
+                                IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=IsNotBusy}" 
+                                BackgroundColor="#d0d0df">
+                                <ImageButton.Source>
+                                    <FontImageSource
+                                        FontFamily="FASolid"
+                                        Glyph="{StaticResource info}"
+                                        Color="Black"
+                                        Size="36"/>
+                                </ImageButton.Source>
+                            </ImageButton>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Entities}" VerticalOptions="Fill" Grid.Row="1">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Entity">
-                    <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
-                        <Label Text="{Binding Name}" FontSize="24" WidthRequest="200"/>
-                        <Label Text="{Binding Initiative}" FontSize="24" WidthRequest="200" />
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
-        <HorizontalStackLayout Grid.Row="2">
-            <Button MaximumWidthRequest="900" MinimumWidthRequest="300" 
-                HorizontalOptions="CenterAndExpand" Text="New Encounter" 
-                 Margin="10" FontSize="24"  
-                Command="{Binding NewEnitityCommand}"
-                IsEnabled="{Binding IsNotBusy}"/>
-
+        </ScrollView>
+        <HorizontalStackLayout HorizontalOptions="End" VerticalOptions="End">
+            <ImageButton WidthRequest="70" HeightRequest="70" CornerRadius="35"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                Command="{Binding NewEnitityCommand}" 
+                IsEnabled="{Binding IsNotBusy}" BackgroundColor="#d1001f">
+                <ImageButton.Source>
+                    <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource plus}"
+                    Color="Black"
+                    Size="36"/>
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton WidthRequest="70" HeightRequest="70" CornerRadius="35"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                Command="{Binding NewEnitityCommand}" 
+                IsEnabled="{Binding IsNotBusy}" BackgroundColor="#d1001f">
+                <ImageButton.Source>
+                    <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource plus}"
+                    Color="Black"
+                    Size="36"/>
+                </ImageButton.Source>
+            </ImageButton>
         </HorizontalStackLayout>
+
     </Grid>
 </ContentPage>

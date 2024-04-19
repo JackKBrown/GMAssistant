@@ -17,4 +17,9 @@ public partial class AllEncounters : ContentPage
 		Debug.WriteLine($"old count is {vm.Encounters.Count}");
 		_ = vm.GetEncountersAsync();
 	}
+
+	protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+	{
+		base.OnNavigatedFrom(args);
+	}
 }

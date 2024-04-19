@@ -16,6 +16,11 @@ public partial class AllSessions : ContentPage
 	protected override void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
-		ViewModel.GetSessionsCommand.Execute(this);
+		_ = ViewModel.GetSessionsAsync();
+	}
+
+	protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
+	{
+		base.OnNavigatedFrom(args);
 	}
 }

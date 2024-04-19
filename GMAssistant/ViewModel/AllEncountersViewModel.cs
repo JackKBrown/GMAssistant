@@ -20,7 +20,7 @@ namespace GMAssistant.ViewModel
 		}
 
 		[RelayCommand]
-		async Task NewEncounterAsync()
+		public async Task NewEncounterAsync()
 		{
 			Encounter encounter = new Encounter
 			{
@@ -32,7 +32,7 @@ namespace GMAssistant.ViewModel
 		}
 
 		[RelayCommand]
-		async Task GoToEncounterAsync(Encounter encounter)
+		public async Task GoToEncounterAsync(Encounter encounter)
 		{
 			if (encounter == null) { return; }
 			await Shell.Current.GoToAsync($"{nameof(EncounterPage)}", true,
