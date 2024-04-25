@@ -16,12 +16,13 @@ public partial class EncounterPage : ContentPage
 	{
 		base.OnNavigatedTo(args);
 		_ = ViewModel.GetEntities();
+		ViewModel.SortEntities();
 	}
 
 	protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
 	{
 		base.OnNavigatedFrom(args);
 		_=ViewModel.SaveEncounter();
-		//ViewModel.SaveEntities();
+		_=ViewModel.SaveEntitiesAsync();
 	}
 }

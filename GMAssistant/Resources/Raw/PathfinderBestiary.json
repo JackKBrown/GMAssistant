@@ -1,0 +1,20 @@
+[
+	{
+		"Name": "Alice",
+		"HP": 123,
+		"AC": 23,
+		"Ref": 6,
+		"Fort": 7,
+		"Will": 3,
+		"Init": 5
+	},
+	{
+		"Name": "Jabberwock",
+		"HP": 12,
+		"AC": 22,
+		"Ref": 5,
+		"Fort": 8,
+		"Will": 5,
+		"Init": 8
+	}
+]

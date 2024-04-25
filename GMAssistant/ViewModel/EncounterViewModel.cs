@@ -1,11 +1,14 @@
 ﻿
 
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
 using GMAssistant.Services;
+using GMAssistant.View;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace GMAssistant.ViewModel;
 
@@ -15,11 +18,13 @@ public partial class EncounterViewModel : BaseViewModel
 	GMADatabase db;
 	[ObservableProperty]
 	public Encounter currentEncounter;
+	private readonly IPopupService popupService;
 	public ObservableCollection<Entity> Entities { get; set; } = new();
-	public EncounterViewModel(GMADatabase dataBase)
+	public EncounterViewModel(GMADatabase dataBase, IPopupService popupService)
 	{
 		Title = "Encounters Page";
 		db = dataBase;
+		this.popupService = popupService;
 	}
 
 	[RelayCommand]
@@ -29,11 +34,17 @@ public partial class EncounterViewModel : BaseViewModel
 		Entity entity = new Entity
 		{
 			Name = "New Actor",
-			Description = "Description",
+			Details = "Description",
 			CurrentHP = 1,
 			MaxHP = 1,
 			Conditions = "",
 			Initiative = 0,
+			InitBonus = 0,
+			AC=10,
+			Fort=0,
+			Ref=0,
+			Will=0,
+			attacks = "",
 			EncounterID = CurrentEncounter.ID,
 		};
 		await db.SaveEntitysAsync(entity);
@@ -77,8 +88,34 @@ public partial class EncounterViewModel : BaseViewModel
 
 	}
 	[RelayCommand]
-	public async Task ShowInfoAsync()
+	public async Task ShowInfoAsync(Entity entity)
 	{
-		await Shell.Current.DisplayAlert("error", $"hello", "ok");
+		await popupService.ShowPopupAsync<ExtraInfoViewModel>(onPresenting: 
+			ViewModel  => {
+				ViewModel.CurrrentEntity = entity;
+			});
+	}
+
+	[RelayCommand]
+	public void SortEntities()
+	{
+		var orderedEntities = Entities.OrderByDescending(o => o.Initiative).ToList();
+		Entities.Clear();
+		foreach (var entity in orderedEntities)
+			Entities.Add(entity);
+	}
+
+	[RelayCommand]
+	public async Task SaveEntitiesAsync()
+	{
+		foreach( Entity entity in Entities )
+			await db.SaveEntitysAsync(entity);
+	}
+
+	[RelayCommand]
+	public async Task GoToSelectEntityAsync()
+	{
+		Debug.WriteLine($"current encounter id is {CurrentEncounter.ID}");
+		await Shell.Current.GoToAsync($"{nameof(SelectPremadeEntity)}?encounterid={CurrentEncounter.ID}");
 	}
 }

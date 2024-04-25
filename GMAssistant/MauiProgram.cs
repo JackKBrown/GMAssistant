@@ -2,6 +2,7 @@
 using GMAssistant.View;
 using GMAssistant.ViewModel;
 using Microsoft.Extensions.Logging;
+using CommunityToolkit.Maui;
 
 namespace GMAssistant
 {
@@ -12,6 +13,7 @@ namespace GMAssistant
 			var builder = MauiApp.CreateBuilder();
 			builder
 				.UseMauiApp<App>()
+				.UseMauiCommunityToolkit()
 				.ConfigureFonts(fonts =>
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -24,13 +26,18 @@ namespace GMAssistant
 			builder.Services.AddSingleton<AllSessions>();
 			builder.Services.AddSingleton<AllEncounters>();
 			builder.Services.AddSingleton<GMADatabase>();
+			builder.Services.AddSingleton<BestiaryService>();
 			builder.Services.AddSingleton<AllSessionsViewModel>();
 			builder.Services.AddSingleton<AllEncountersViewModel>();
 
 			builder.Services.AddTransient<SessionViewModel>();
 			builder.Services.AddTransient<EncounterViewModel>();
+			builder.Services.AddTransient<SelectPremadeEntityViewModel>();
 			builder.Services.AddTransient<SessionPage>();
 			builder.Services.AddTransient<EncounterPage>();
+			builder.Services.AddTransient<SelectPremadeEntity>();
+
+			builder.Services.AddTransientPopup<ExtraInfo, ExtraInfoViewModel>();
 
 			return builder.Build();
 		}

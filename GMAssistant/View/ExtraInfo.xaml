@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:model="clr-namespace:GMAssistant.Model"
+             xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             xmlns:view="clr-namespace:GMAssistant.View"
+             x:DataType="viewmodel:ExtraInfoViewModel"
+             x:Class="GMAssistant.View.ExtraInfo">
+    <toolkit:Popup.Resources>
+        <Style TargetType="view:ExtraInfo">
+            <Setter Property="Color" Value="Transparent" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="True" />
+        </Style>
+    </toolkit:Popup.Resources>
+    <Border Padding="5" Stroke="Transparent" HeightRequest="500" WidthRequest="300" BackgroundColor="Black">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="30"/>
+        </Border.StrokeShape>
+        <VerticalStackLayout Padding="5">
+            <HorizontalStackLayout Padding="2">
+                <Label Text="Name: "/>
+                <Editor Text="name"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="2">
+                <Label Text="Init: "/>
+                <Editor Text="{Binding CurrrentEntity.Initiative}"/>
+                <Label Text="({Binding Details.Init})" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="2">
+                <Label Text="HP: "/>
+                <Editor Text="{Binding CurrrentEntity.CurrentHP}"/>
+                <Label Text="/"/>
+                <Editor Text="{Binding CurrrentEntity.MaxHP}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="2">
+                <Label Text="Ref: "/>
+                <Editor Text="{Binding CurrrentEntity.Will}"/>
+                <Label Text="Fort: "/>
+                <Editor Text="{Binding CurrrentEntity.Fort}"/>
+                <Label Text="Will: "/>
+                <Editor Text="{Binding CurrrentEntity.Will}"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Padding="2">
+                <Button Text="Reroll Initiative"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Border>
+
+</toolkit:Popup>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GMAssistant.View.SelectPremadeEntity"
+             xmlns:model="clr-namespace:GMAssistant.Model"
+             xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             x:DataType="viewmodel:SelectPremadeEntityViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout>
+        <CollectionView ItemsSource="{Binding Bestiary}" VerticalOptions="Fill" Grid.Row="0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Session">
+                    <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                        <Label Text="{Binding Name}" FontSize="24"/>
+                        <Button Text="Select" CommandParameter="{Binding .}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

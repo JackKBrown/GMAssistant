@@ -6,5 +6,7 @@
     <x:String x:Key="user">&#xf007;</x:String>
     <x:String x:Key="plus">&#x2b;</x:String>
     <x:String x:Key="info">&#xf129;</x:String>
+    <x:String x:Key="sort">&#xf0dc;</x:String>
+    <x:String x:Key="dtwenty">&#xf6cf;</x:String>
 
 </ResourceDictionary>
