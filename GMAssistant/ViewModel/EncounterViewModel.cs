@@ -39,12 +39,12 @@ public partial class EncounterViewModel : BaseViewModel
 			MaxHP = 1,
 			Conditions = "",
 			Initiative = 0,
-			InitBonus = 0,
+			Perception = 0,
 			AC=10,
 			Fort=0,
 			Ref=0,
 			Will=0,
-			attacks = "",
+			Actions = "",
 			EncounterID = CurrentEncounter.ID,
 		};
 		await db.SaveEntitysAsync(entity);

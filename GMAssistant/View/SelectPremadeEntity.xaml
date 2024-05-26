@@ -6,17 +6,34 @@
              xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
              x:DataType="viewmodel:SelectPremadeEntityViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Bestiary}" VerticalOptions="Fill" Grid.Row="0">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Session">
-                    <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
-                        <Label Text="{Binding Name}" FontSize="24"/>
-                        <Button Text="Select" CommandParameter="{Binding .}"
+
+    <Grid>
+        <VerticalStackLayout Grid.Row="0">
+            <Grid ColumnDefinitions="*,60">
+                <SearchBar Margin="5" Placeholder="Search Bestiary ..." SearchCommand="{Binding FilterCommand}" Text="{Binding SearchQuery}"/>
+                <ImageButton Grid.Column="1" Margin="5" CornerRadius="50" WidthRequest="50" HeightRequest="50"
+                         Command="{Binding FilterPopupCommand}" >
+                    <ImageButton.Source>
+                        <FontImageSource
+                        FontFamily="FASolid"
+                        Glyph="{StaticResource plus}"
+                        Color="Black"/>
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+        </VerticalStackLayout>
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding BestiaryResults}" VerticalOptions="Fill" Grid.Row="0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Session">
+                        <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                            <Label Text="{Binding Name}" FontSize="24"/>
+                            <Button Text="Select" CommandParameter="{Binding .}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
 </ContentPage>

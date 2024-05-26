@@ -22,5 +22,8 @@
     <FlyoutItem Title="All Encounters" Icon="cube.png">
         <ShellContent Title="All Encounters" ContentTemplate="{DataTemplate view:AllEncounters}" />
     </FlyoutItem>
+    <FlyoutItem Title="Item Shop" Icon="cube.png">
+        <ShellContent Title="Item Shop" ContentTemplate="{DataTemplate view:ItemShopPage}" />
+    </FlyoutItem>
 
 </Shell>

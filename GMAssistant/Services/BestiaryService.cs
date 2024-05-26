@@ -10,6 +10,7 @@ namespace GMAssistant.Services;
 
 public class BestiaryService
 {
+
 	public List<Entity> pathfinderBestiaryList;
 	public async Task<List<Entity>> GetPathfinderBestiary()
 	{

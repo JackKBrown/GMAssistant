@@ -95,5 +95,15 @@ namespace GMAssistant.Services
 				return await Database.InsertAsync(item);
 			}
 		}
+
+		public async Task<int> DeleteEntityAsync(Entity item)
+		{
+			await Init();
+			if (item.ID != 0)
+			{
+				return await Database.DeleteAsync(item);
+			}
+			return 0;
+		}
 	}
 }

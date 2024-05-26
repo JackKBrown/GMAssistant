@@ -7,53 +7,52 @@
              x:DataType="viewmodel:SessionViewModel"
              Title="{Binding CurrentSession.Name}">
     <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition />
-            <RowDefinition Height="80" />
-        </Grid.RowDefinitions>
-        <VerticalStackLayout Grid.Row="0">
+        <ScrollView>
+            <VerticalStackLayout>
             <HorizontalStackLayout>
                 <Label Text="Name: " FontSize="24"/>
                 <Editor Margin="5" FontSize="24" Text="{Binding CurrentSession.Name}"/>
             </HorizontalStackLayout>
             <Label Text="Description: " FontSize="24"/>
             <Editor Margin="5" Text="{Binding CurrentSession.Description}"/>
-        </VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Encounters}" VerticalOptions="Fill" Grid.Row="1">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Encounter">
-                    <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
-                        <Border Stroke="#C49B33"
+                <CollectionView ItemsSource="{Binding Encounters}" VerticalOptions="Fill">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Encounter">
+                            <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                                <Border Stroke="#C49B33"
                          StrokeThickness="1"
                          StrokeShape="RoundRectangle 10,10,10,10"
                          WidthRequest="250"
                          Padding="8,8">
-                            <Border.GestureRecognizers>
-                                <TapGestureRecognizer 
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                 CommandParameter="{Binding .}"
                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SessionViewModel}}, Path=GoToEncounterCommand}"/>
-                            </Border.GestureRecognizers>
+                                        <SwipeGestureRecognizer
+                                CommandParameter="{Binding .}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SessionViewModel}}, Path=GoToEncounterCommand}"/>
+                                    </Border.GestureRecognizers>
 
-                            <Label Text="{Binding Name}" FontSize="24"/>
-                        </Border>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
+                                    <Label Text="{Binding Name}" FontSize="24"/>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-        </CollectionView>
-        <HorizontalStackLayout Grid.Row="2">
-            <Button MaximumWidthRequest="900" MinimumWidthRequest="300" 
-                HorizontalOptions="CenterAndExpand" Text="New Encounter" 
-                 Margin="10" FontSize="24"  
-                Command="{Binding NewEncounterCommand}"
-                IsEnabled="{Binding IsNotBusy}"/>            
-            <Button MaximumWidthRequest="900" MinimumWidthRequest="300" 
-                HorizontalOptions="CenterAndExpand" Text="info" 
-                 Margin="10" FontSize="24"  
-                Command="{Binding DisplayinfoCommand}"
-                IsEnabled="{Binding IsNotBusy}"/>
-            
-        </HorizontalStackLayout>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <ImageButton WidthRequest="70" HeightRequest="70" CornerRadius="35"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                Command="{Binding NewEncounterCommand}" 
+                IsEnabled="{Binding IsNotBusy}" BackgroundColor="#d1001f">
+            <ImageButton.Source>
+                <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource plus}"
+                    Color="Black"
+                    Size="36"/>
+            </ImageButton.Source>
+        </ImageButton>
     </Grid>
 </ContentPage>

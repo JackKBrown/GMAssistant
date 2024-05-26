@@ -36,20 +36,22 @@ public partial class ExtraInfoViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	public async Task GoToSelectEntityAsync()
-	{
-		await Shell.Current.GoToAsync($"{nameof(SelectPremadeEntity)}", true, 
-			new Dictionary<string, object>
-				{
-					{"entity", CurrrentEntity }
-				});
-		finishedEventManager.HandleEvent(this, EventArgs.Empty, nameof(Finished));
-	}
-
-	[RelayCommand]
 	public async Task SaveChangesAsync()
 	{
 		await database.SaveEntitysAsync(CurrrentEntity);
 	}
-	
+
+	[RelayCommand]
+	public async Task DeleteEntityAsync()
+	{
+		await database.DeleteEntityAsync(CurrrentEntity);
+		finishedEventManager.HandleEvent(this, EventArgs.Empty, nameof(Finished));
+	}
+	[RelayCommand]
+	public void RollInit()
+	{
+		Random rnd = new Random();
+		currrentEntity.Initiative = rnd.Next(1,21) + currrentEntity.Perception;
+	}
+
 }

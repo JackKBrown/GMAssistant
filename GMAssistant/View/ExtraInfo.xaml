@@ -37,14 +37,17 @@
             </HorizontalStackLayout>
             <HorizontalStackLayout Padding="2">
                 <Label Text="Ref: "/>
-                <Editor Text="{Binding CurrrentEntity.Will}"/>
+                <Editor Text="{Binding CurrrentEntity.Ref}"/>
                 <Label Text="Fort: "/>
                 <Editor Text="{Binding CurrrentEntity.Fort}"/>
                 <Label Text="Will: "/>
                 <Editor Text="{Binding CurrrentEntity.Will}"/>
             </HorizontalStackLayout>
             <HorizontalStackLayout Padding="2">
-                <Button Text="Reroll Initiative"/>
+                <Button Text="Reroll Initiative"
+                        Command="{Binding RollInitCommand}"/>
+                <Button Text="Delete "
+                        Command="{Binding DeleteEntityCommand}"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Border>

@@ -69,7 +69,6 @@
 	  <None Remove="Resources\Fonts\Font Awesome 6 Brands-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Regular-400.otf" />
 	  <None Remove="Resources\Fonts\Font Awesome 6 Free-Solid-900.otf" />
-	  <None Remove="Resources\Raw\PathfinderBestiary.json" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,6 +84,9 @@
 	<ItemGroup>
 	  <Compile Update="View\EncounterPage.xaml.cs">
 	    <DependentUpon>EncounterPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\FilterPopup.xaml.cs">
+	    <DependentUpon>FilterPopup.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="View\SessionPage.xaml.cs">
 	    <DependentUpon>SessionPage.xaml</DependentUpon>
@@ -104,7 +106,13 @@
 	  <MauiXaml Update="View\EncounterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\FilterPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\ExtraInfo.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\ItemShopPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\SelectPremadeEntity.xaml">
