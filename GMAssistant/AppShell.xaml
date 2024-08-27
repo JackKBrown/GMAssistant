@@ -5,16 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:GMAssistant"
     xmlns:view="clr-namespace:GMAssistant.View"
-    Title="GMAssistant">
-
-    <Shell.Resources>
-        <ResourceDictionary>
-            <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.TitleColor" Value="Aqua"/>
-                <Setter Property="Shell.TabBarBackgroundColor" Value="Aqua"/>
-            </Style>
-        </ResourceDictionary>
-    </Shell.Resources>
+    Title="GMAssistant"
+    FlyoutBackgroundColor="{StaticResource DarkParchment}">
 
     <FlyoutItem Title="All Sessions" Icon="cube.png">
         <ShellContent Title="All Sessions" ContentTemplate="{DataTemplate view:AllSessions}" />
@@ -23,7 +15,10 @@
         <ShellContent Title="All Encounters" ContentTemplate="{DataTemplate view:AllEncounters}" />
     </FlyoutItem>
     <FlyoutItem Title="Item Shop" Icon="cube.png">
-        <ShellContent Title="Item Shop" ContentTemplate="{DataTemplate view:ItemShopPage}" />
+        <ShellContent Title="Items" ContentTemplate="{DataTemplate view:ItemsPage}" />
+    </FlyoutItem>    
+    <FlyoutItem Title="Character Generator" Icon="cube.png">
+        <ShellContent Title="Items" ContentTemplate="{DataTemplate view:CharacterGenPage}" />
     </FlyoutItem>
 
 </Shell>

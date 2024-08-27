@@ -26,15 +26,18 @@ namespace GMAssistant
 			builder.Services.AddSingleton<AllSessions>();
 			builder.Services.AddSingleton<AllEncounters>();
 			builder.Services.AddSingleton<SelectPremadeEntity>();
-			builder.Services.AddSingleton<ItemShopPage>();
+			builder.Services.AddSingleton<ItemsPage>();
+			builder.Services.AddSingleton<CharacterGenPage>();
 
 			builder.Services.AddSingleton<AllSessionsViewModel>();
 			builder.Services.AddSingleton<AllEncountersViewModel>();
 			builder.Services.AddSingleton<SelectPremadeEntityViewModel>();
-			builder.Services.AddSingleton<ItemShopViewModel>();
+			builder.Services.AddSingleton<ItemsViewModel>();
+			builder.Services.AddSingleton<CharacterGenViewModel>();
 
 			builder.Services.AddSingleton<GMADatabase>();
 			builder.Services.AddSingleton<BestiaryService>();
+			builder.Services.AddSingleton<ItemService>();
 			
 			builder.Services.AddTransient<SessionViewModel>();
 			builder.Services.AddTransient<EncounterViewModel>();

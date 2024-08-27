@@ -14,6 +14,6 @@ public partial class SelectPremadeEntity : ContentPage
 	protected override void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
-		_ = ViewModel.GetBestiaryAsync();
+		//ViewModel.GetBestiaryAsync();
 	}
 }

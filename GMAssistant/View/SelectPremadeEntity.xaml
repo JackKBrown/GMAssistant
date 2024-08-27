@@ -1,39 +1,63 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:scripts="clr-namespace:GMAssistant.Scripts"
              x:Class="GMAssistant.View.SelectPremadeEntity"
              xmlns:model="clr-namespace:GMAssistant.Model"
              xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
              x:DataType="viewmodel:SelectPremadeEntityViewModel"
              Title="{Binding Title}">
 
-    <Grid>
+    <Grid RowDefinitions="Auto,*">
         <VerticalStackLayout Grid.Row="0">
-            <Grid ColumnDefinitions="*,60">
-                <SearchBar Margin="5" Placeholder="Search Bestiary ..." SearchCommand="{Binding FilterCommand}" Text="{Binding SearchQuery}"/>
-                <ImageButton Grid.Column="1" Margin="5" CornerRadius="50" WidthRequest="50" HeightRequest="50"
-                         Command="{Binding FilterPopupCommand}" >
-                    <ImageButton.Source>
-                        <FontImageSource
-                        FontFamily="FASolid"
-                        Glyph="{StaticResource plus}"
-                        Color="Black"/>
-                    </ImageButton.Source>
-                </ImageButton>
-            </Grid>
-        </VerticalStackLayout>
-        <ScrollView Grid.Row="1">
-            <CollectionView ItemsSource="{Binding BestiaryResults}" VerticalOptions="Fill" Grid.Row="0">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Session">
-                        <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
-                            <Label Text="{Binding Name}" FontSize="24"/>
-                            <Button Text="Select" CommandParameter="{Binding .}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
+            <SearchBar Margin="5" Placeholder="Search Bestiary ..." SearchCommand="{Binding FilterCommand}" Text="{Binding SearchQuery}"/>
+            <toolkit:Expander Margin="10">
+                <toolkit:Expander.Header>
+                    <HorizontalStackLayout>
+                        <scripts:FontAwesomeLabel
+                 Text="{StaticResource sort}"
+                  UseSolidFont="True"
+                   FontSize="40"
+                    HorizontalOptions="Center" />
+                        <Label Text="Filters: " FontSize="24" VerticalOptions="Center" Margin="5"/>
+                    </HorizontalStackLayout>
+                </toolkit:Expander.Header>
+                <toolkit:Expander.Content>
+                    <Border Padding="10" Stroke="{StaticResource Gray900}"
+                             StrokeThickness="1"
+                             StrokeShape="RoundRectangle 10,10,10,10">
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout VerticalOptions="Center">
+                            <Label Text="Level:"/>
+                            <Label Text="Max "/>
+                            <Entry Text="{Binding MaxLevel}" Keyboard="Numeric"/>
+                            <Label Text="Min "/>
+                            <Entry Text="{Binding MinLevel}" Keyboard="Numeric"/>
                         </HorizontalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
+                        <HorizontalStackLayout>
+                            <Label Text="Search Trait"/>
+                            <Entry Text="{Binding Trait}"/>
+                        </HorizontalStackLayout>
+                        
+                    </VerticalStackLayout>
+                    </Border>
+                </toolkit:Expander.Content>
+            </toolkit:Expander>
+        </VerticalStackLayout>
+        <!--ScrollView Grid.Row="1"-->
+        <CollectionView ItemsSource="{Binding BestiaryResults}" VerticalOptions="FillAndExpand" RemainingItemsThreshold="1"
+                            RemainingItemsThresholdReachedCommand="{Binding GetNextBestiaryAsyncCommand}" Grid.Row="1">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Session">
+                    <HorizontalStackLayout Padding="10" >
+                        <Label Text="{Binding Name}" FontSize="24"/>
+                        <Button Text="Select" CommandParameter="{Binding .}"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--/ScrollView-->
     </Grid>
 </ContentPage>

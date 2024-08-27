@@ -41,6 +41,7 @@ namespace GMAssistant.Model
 		public int Fort { get; set; }
 		public int Will { get; set; }
 		public int Perception { get; set; }
+		public string Traits { get; set; }
 		public string Actions { get; set; }
 		public string Spells { get; set; }
 		public string RIW {  get; set; }

@@ -74,6 +74,23 @@ public partial class EncounterViewModel : BaseViewModel
 		finally { IsBusy = false; }
 	}
 
+	[RelayCommand]
+	public async Task DeleteEntityAsync(Entity entity)
+	{
+		if (CurrentEncounter == null) { return; }
+		if (IsBusy) return;
+
+		try
+		{
+			IsBusy = true;
+			_=await db.DeleteEntityAsync(entity);
+		}
+		catch (Exception ex)
+		{ Debug.WriteLine(ex); }
+		finally
+		{ IsBusy = false; }
+	}
+
 	public async Task SaveEncounter()
 	{
 		try

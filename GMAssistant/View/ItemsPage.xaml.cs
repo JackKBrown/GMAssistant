@@ -2,10 +2,10 @@ using GMAssistant.ViewModel;
 
 namespace GMAssistant.View;
 
-public partial class ItemShopPage : ContentPage
+public partial class ItemsPage : ContentPage
 {
-	ItemShopViewModel viewModel;
-	public ItemShopPage(ItemShopViewModel vm)
+	ItemsViewModel viewModel;
+	public ItemsPage(ItemsViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;

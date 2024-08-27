@@ -1,11 +1,5 @@
 ﻿using GMAssistant.Model;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 
 namespace GMAssistant.Services
@@ -52,6 +46,16 @@ namespace GMAssistant.Services
 			return await Database.QueryAsync<Encounter>("select * from Encounter where SessionID=?", ID);
 		}
 
+		public async Task<int> DeleteSessionAsync(Session item)
+		{
+			await Init();
+			if (item.ID != 0)
+			{
+				return await Database.DeleteAsync(item);
+			}
+			return 0;
+		}
+
 		//ENCOUNTER
 		public async Task<List<Encounter>> GetEncountersAsync()
 		{
@@ -69,6 +73,16 @@ namespace GMAssistant.Services
 			{
 				return await Database.InsertAsync(item);
 			}
+		}
+
+		public async Task<int> DeleteEncounterAsync(Encounter item)
+		{
+			await Init();
+			if (item.ID != 0)
+			{
+				return await Database.DeleteAsync(item);
+			}
+			return 0;
 		}
 
 		public async Task<List<Entity>> GetEncounterEnitities(int ID)

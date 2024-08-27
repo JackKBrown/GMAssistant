@@ -3,7 +3,7 @@ using CommunityToolkit.Maui.Core.Handlers;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
-using GMAssistant.Models;
+using GMAssistant.Model;
 using GMAssistant.Services;
 using GMAssistant.View;
 using System;

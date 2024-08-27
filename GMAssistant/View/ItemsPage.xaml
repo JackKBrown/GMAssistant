@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             xmlns:converter="clr-namespace:GMAssistant.Converters"
+             xmlns:model="clr-namespace:GMAssistant.Model"
+             xmlns:scripts="clr-namespace:GMAssistant.Scripts"
+             x:DataType="viewmodel:ItemsViewModel"
+             x:Class="GMAssistant.View.ItemsPage"
+             Title="ItemShopPage">
+    <Grid>
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout >
+                <toolkit:Expander>
+                    <toolkit:Expander.Header>
+                        <HorizontalStackLayout>
+                            <scripts:FontAwesomeLabel
+                                 Text="{StaticResource sort}"
+                                  UseSolidFont="True"
+                                   FontSize="58"
+                                    HorizontalOptions="Center" />
+                            <Label Text="Filters: " FontSize="24" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Max Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                                <Label Text="Min Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Max Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                                <Label Text="Min Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Max Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                                <Label Text="Min Level"/>
+                                <Editor AutoSize="TextChanges" Placeholder="30" Text=""/>
+                            </HorizontalStackLayout>
+
+                        </VerticalStackLayout>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
+                <HorizontalStackLayout>
+                    <Button Text="Show All" Command="{Binding GetItemsCommand}"/>
+                    <Button Text="Generate Shop"/>
+                </HorizontalStackLayout>
+                <CollectionView ItemsSource="{Binding ItemResults}" VerticalOptions="Fill" Grid.Row="0">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Item">
+                            <HorizontalStackLayout Padding="10" HorizontalOptions="Center">
+                                <Label Text="{Binding Name}" FontSize="24"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <HorizontalStackLayout HorizontalOptions="End" VerticalOptions="End">
+            <ImageButton WidthRequest="70" HeightRequest="70" CornerRadius="35"
+        HorizontalOptions="End" VerticalOptions="End" Margin="10"
+        Command="{Binding GenerateShopCommand}" 
+        IsEnabled="{Binding IsNotBusy}" BackgroundColor="#d1001f">
+                <ImageButton.Source>
+                    <FontImageSource
+            FontFamily="FASolid"
+            Glyph="{StaticResource dtwenty}"
+            Color="Black"
+            Size="36"/>
+                </ImageButton.Source>
+            </ImageButton>
+        </HorizontalStackLayout>
+    </Grid>
+
+</ContentPage>

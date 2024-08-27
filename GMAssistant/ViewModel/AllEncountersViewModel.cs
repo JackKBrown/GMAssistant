@@ -9,10 +9,10 @@ using System.Diagnostics;
 
 namespace GMAssistant.ViewModel
 {
-	public partial class AllEncountersViewModel:BaseViewModel
+	public partial class AllEncountersViewModel : BaseViewModel
 	{
 		GMADatabase database;
-		public ObservableCollection<Encounter> Encounters { get; } = new(); 
+		public ObservableCollection<Encounter> Encounters { get; } = new();
 		public AllEncountersViewModel(GMADatabase dataBase)
 		{
 			Title = "All Encounters Page";
@@ -44,6 +44,14 @@ namespace GMAssistant.ViewModel
 		}
 
 		[RelayCommand]
+		public async Task DeleteEncounterAsync(Encounter encounter)
+		{
+			if (encounter == null) { return; }
+			_ = await database.DeleteEncounterAsync(encounter);
+			Encounters.Remove(encounter);
+		}
+
+		[RelayCommand]
 		public async Task GetEncountersAsync()
 		{
 			if (IsBusy) return;
@@ -56,10 +64,10 @@ namespace GMAssistant.ViewModel
 				if (Encounters.Count != 0)
 					Encounters.Clear();
 
-				foreach(var encounter in encountersTemp)
+				foreach (var encounter in encountersTemp)
 					Encounters.Add(encounter);
 			}
-			catch (Exception ex) 
+			catch (Exception ex)
 			{
 				Debug.WriteLine(ex);
 				await Shell.Current.DisplayAlert("error", $"Session error{ex.Message}", "ok");

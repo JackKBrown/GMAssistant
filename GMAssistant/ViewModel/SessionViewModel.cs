@@ -4,16 +4,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
 using GMAssistant.Services;
+using GMAssistant.View;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Threading;
-using GMAssistant.View;
 
 namespace GMAssistant.ViewModel;
 
 [QueryProperty(nameof(CurrentSession), "session")]
-public partial class SessionViewModel:BaseViewModel
+public partial class SessionViewModel : BaseViewModel
 {
 	GMADatabase db;
 
@@ -50,6 +48,14 @@ public partial class SessionViewModel:BaseViewModel
 			});
 
 	}
+
+	[RelayCommand]
+	async Task DeleteEncounterAsync(Encounter encounter)
+	{
+		if (encounter == null) { return; }
+		await db.DeleteEncounterAsync(encounter);
+		Encounters.Remove(encounter);
+	}
 	public async Task SaveSession()
 	{
 		try
@@ -63,10 +69,10 @@ public partial class SessionViewModel:BaseViewModel
 		}
 
 	}
-	
+
 	public async Task GetEncounters()
 	{
-		if(CurrentSession == null) { return; }
+		if (CurrentSession == null) { return; }
 		if (IsBusy) return;
 
 		try
