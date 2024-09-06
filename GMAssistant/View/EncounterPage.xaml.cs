@@ -1,5 +1,4 @@
 using GMAssistant.ViewModel;
-using System.Diagnostics;
 
 namespace GMAssistant.View;
 
@@ -22,7 +21,13 @@ public partial class EncounterPage : ContentPage
 	protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
 	{
 		base.OnNavigatedFrom(args);
-		_=ViewModel.SaveEncounter();
-		_=ViewModel.SaveEntitiesAsync();
+		_ = ViewModel.SaveEncounter();
+		_ = ViewModel.SaveEntitiesAsync();
 	}
+
+	private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		ViewModel.SortEntities();
+	}
+
 }

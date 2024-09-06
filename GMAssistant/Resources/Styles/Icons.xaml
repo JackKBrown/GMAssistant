@@ -8,5 +8,6 @@
     <x:String x:Key="info">&#xf129;</x:String>
     <x:String x:Key="sort">&#xf0dc;</x:String>
     <x:String x:Key="dtwenty">&#xf6cf;</x:String>
+    <x:String x:Key="bin">&#xf1f8;</x:String>
 
 </ResourceDictionary>

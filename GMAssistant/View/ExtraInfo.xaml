@@ -15,10 +15,12 @@
             <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="True" />
         </Style>
     </toolkit:Popup.Resources>
-    <Border Padding="5" Stroke="Transparent" HeightRequest="500" WidthRequest="300" BackgroundColor="Black">
+    <Border Padding="5" Stroke="Transparent" HeightRequest="500" WidthRequest="300">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="30"/>
         </Border.StrokeShape>
+        <Grid>
+            
         <VerticalStackLayout Padding="5">
             <HorizontalStackLayout Padding="2">
                 <Label Text="Name: "/>
@@ -35,7 +37,7 @@
                 <Label Text="/"/>
                 <Editor Text="{Binding CurrrentEntity.MaxHP}"/>
             </HorizontalStackLayout>
-            <HorizontalStackLayout Padding="2">
+            <HorizontalStackLayout Padding="2" HorizontalOptions="Center">
                 <Label Text="Ref: "/>
                 <Editor Text="{Binding CurrrentEntity.Ref}"/>
                 <Label Text="Fort: "/>
@@ -43,13 +45,14 @@
                 <Label Text="Will: "/>
                 <Editor Text="{Binding CurrrentEntity.Will}"/>
             </HorizontalStackLayout>
-            <HorizontalStackLayout Padding="2">
+        </VerticalStackLayout>
+        <HorizontalStackLayout Padding="2" VerticalOptions="End" HorizontalOptions="Center">
                 <Button Text="Reroll Initiative"
                         Command="{Binding RollInitCommand}"/>
                 <Button Text="Delete "
                         Command="{Binding DeleteEntityCommand}"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+        </HorizontalStackLayout>
+        </Grid>
     </Border>
 
 </toolkit:Popup>

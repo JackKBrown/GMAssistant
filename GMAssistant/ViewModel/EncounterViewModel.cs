@@ -1,6 +1,4 @@
-﻿
-
-using CommunityToolkit.Maui.Core;
+﻿using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
@@ -8,7 +6,6 @@ using GMAssistant.Services;
 using GMAssistant.View;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Text.Json;
 
 namespace GMAssistant.ViewModel;
 
@@ -40,10 +37,10 @@ public partial class EncounterViewModel : BaseViewModel
 			Conditions = "",
 			Initiative = 0,
 			Perception = 0,
-			AC=10,
-			Fort=0,
-			Ref=0,
-			Will=0,
+			AC = 10,
+			Fort = 0,
+			Ref = 0,
+			Will = 0,
 			Actions = "",
 			EncounterID = CurrentEncounter.ID,
 		};
@@ -65,6 +62,7 @@ public partial class EncounterViewModel : BaseViewModel
 
 			foreach (var entity in entityTemp)
 				Entities.Add(entity);
+			SortEntities();
 		}
 		catch (Exception ex)
 		{
@@ -83,7 +81,8 @@ public partial class EncounterViewModel : BaseViewModel
 		try
 		{
 			IsBusy = true;
-			_=await db.DeleteEntityAsync(entity);
+			_ = await db.DeleteEntityAsync(entity);
+			Entities.Remove(entity);
 		}
 		catch (Exception ex)
 		{ Debug.WriteLine(ex); }
@@ -107,10 +106,12 @@ public partial class EncounterViewModel : BaseViewModel
 	[RelayCommand]
 	public async Task ShowInfoAsync(Entity entity)
 	{
-		await popupService.ShowPopupAsync<ExtraInfoViewModel>(onPresenting: 
-			ViewModel  => {
+		await popupService.ShowPopupAsync<ExtraInfoViewModel>(onPresenting:
+			ViewModel =>
+			{
 				ViewModel.CurrrentEntity = entity;
 			});
+		GetEntities();
 	}
 
 	[RelayCommand]
@@ -123,9 +124,28 @@ public partial class EncounterViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
+	public void RollInit(Entity entity)
+	{
+		var rand = new Random();
+		int roll = rand.Next(1, 20);
+		entity.Initiative = roll + entity.Perception;
+		Debug.WriteLine($"{entity.Name}'s init is {entity.Initiative}");
+	}
+
+	[RelayCommand]
+	public void RollAll()
+	{
+		foreach (Entity entity in Entities)
+		{
+			RollInit(entity);
+		}
+		SortEntities();
+	}
+
+	[RelayCommand]
 	public async Task SaveEntitiesAsync()
 	{
-		foreach( Entity entity in Entities )
+		foreach (Entity entity in Entities)
 			await db.SaveEntitysAsync(entity);
 	}
 
@@ -134,5 +154,47 @@ public partial class EncounterViewModel : BaseViewModel
 	{
 		Debug.WriteLine($"current encounter id is {CurrentEncounter.ID}");
 		await Shell.Current.GoToAsync($"{nameof(SelectPremadeEntity)}?encounterid={CurrentEncounter.ID}");
+	}
+
+	Entity lastDraggedOver;
+
+	[RelayCommand]
+	public void DragOver(Entity item)
+	{
+		lastDraggedOver = item;
+		//Debug.WriteLine($"current drag over{lastDraggedOver.Name}");
+	}
+
+	[RelayCommand]
+	public void Drop(Entity item)
+	{
+		try
+		{
+			if (lastDraggedOver != null)
+			{
+				item.Initiative = lastDraggedOver.Initiative;
+				int currentItemPos = Entities.IndexOf(item);
+				int newPos = Entities.IndexOf(lastDraggedOver);
+				Entities.Move(currentItemPos, newPos);
+			}
+		}
+		catch (Exception e)
+		{
+			Debug.WriteLine(e.Message);
+		}
+		finally
+		{
+			lastDraggedOver = null;
+		}
+
+		//CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+		//string text = "This is a Toast";
+		//ToastDuration duration = ToastDuration.Short;
+		//double fontSize = 14;
+
+		//var toast = Toast.Make(text, duration, fontSize);
+
+		//await toast.Show(cancellationTokenSource.Token);
+		//Debug.WriteLine($"position {lastDraggedOver.Name}");
 	}
 }

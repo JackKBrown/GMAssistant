@@ -132,7 +132,7 @@
 
     <Style TargetType="Entry">
         <Setter Property="TextColor" Value="{StaticResource PrimaryDarkText}" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14" />
         <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
@@ -470,5 +470,6 @@
             </VisualStateGroupList>
         </Setter>
     </Style>
+    
 
 </ResourceDictionary>
