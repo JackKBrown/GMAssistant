@@ -1,20 +1,10 @@
-﻿using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Core;
+﻿using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
-using GMAssistant.Model;
 using GMAssistant.Services;
 using MvvmHelpers;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 
 namespace GMAssistant.ViewModel;
 
@@ -45,7 +35,7 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	public List<Entity> bestiary = new();
 	public List<Entity> filteredBestiary = new();
 	int _pageSize = 20;
-	public SelectPremadeEntityViewModel (GMADatabase database, BestiaryService bestiaryService, IPopupService popupService)
+	public SelectPremadeEntityViewModel(GMADatabase database, BestiaryService bestiaryService, IPopupService popupService)
 	{
 		Title = "Load from Bestiary";
 		db = database;
@@ -113,7 +103,8 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	public async Task FilterPopupAsync()
 	{
 		await pService.ShowPopupAsync<FilterPopupViewModel>(onPresenting:
-			ViewModel => {
+			ViewModel =>
+			{
 				ViewModel.Preferences = FilterPreferences;
 			});
 	}

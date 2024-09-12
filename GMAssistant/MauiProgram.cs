@@ -1,8 +1,8 @@
-﻿using GMAssistant.Services;
+﻿using CommunityToolkit.Maui;
+using GMAssistant.Services;
 using GMAssistant.View;
 using GMAssistant.ViewModel;
 using Microsoft.Extensions.Logging;
-using CommunityToolkit.Maui;
 
 namespace GMAssistant
 {
@@ -38,12 +38,12 @@ namespace GMAssistant
 			builder.Services.AddSingleton<GMADatabase>();
 			builder.Services.AddSingleton<BestiaryService>();
 			builder.Services.AddSingleton<ItemService>();
-			
+
 			builder.Services.AddTransient<SessionViewModel>();
 			builder.Services.AddTransient<EncounterViewModel>();
 			builder.Services.AddTransient<SessionPage>();
 			builder.Services.AddTransient<EncounterPage>();
-			
+
 
 			builder.Services.AddTransientPopup<ExtraInfo, ExtraInfoViewModel>();
 			builder.Services.AddTransientPopup<FilterPopup, FilterPopupViewModel>();

@@ -48,11 +48,19 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="BorderColor" Value="Black"/>
+        <Setter Property="BorderWidth" Value="1"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
         <Setter Property="MinimumHeightRequest" Value="44"/>
         <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="Black"
+                Offset="10,10"
+                Opacity="0.4" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -450,7 +458,7 @@
     <Style x:Key="Card" TargetType="Frame">
         <Setter Property="HasShadow" Value="{OnPlatform Android=true, iOS=false, Default=true}" />
         <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="BackgroundColor" Value="{StaticResource LightParchment}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Parchment}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -463,13 +471,36 @@
                     <VisualState x:Name="PointerOver">
                         <VisualState.Setters>
                             <Setter Property="BackgroundColor"
-                                    Value="{StaticResource Parchment}"/>
+                                    Value="{StaticResource LightParchment}"/>
                         </VisualState.Setters>
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
     </Style>
+
+    <Style x:Key="CircleIButton" TargetType="ImageButton" x:Shared="false">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="CornerRadius" Value="35" />
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
+        <Setter Property="BorderColor" Value="Black" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="Black"
+                Offset="10,10"
+                Opacity="0.4" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="LabelLarge" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+    </Style>    
     
+    <Style x:Key="LabelSmall" TargetType="Label">
+        <Setter Property="FontSize" Value="8" />
+    </Style>
 
 </ResourceDictionary>

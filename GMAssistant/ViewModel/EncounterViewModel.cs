@@ -61,7 +61,9 @@ public partial class EncounterViewModel : BaseViewModel
 				Entities.Clear();
 
 			foreach (var entity in entityTemp)
+			{
 				Entities.Add(entity);
+			}
 			SortEntities();
 		}
 		catch (Exception ex)

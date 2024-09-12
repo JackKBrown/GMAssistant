@@ -1,17 +1,6 @@
-﻿using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Core.Handlers;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
-using GMAssistant.Model;
-using GMAssistant.Services;
-using GMAssistant.View;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GMAssistant.ViewModel;
 
@@ -33,5 +22,5 @@ public partial class FilterPopupViewModel : BaseViewModel
 	{
 		Preferences.MaxCR = Editable;
 	}
-	
+
 }

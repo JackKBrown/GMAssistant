@@ -1,13 +1,14 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace GMAssistant.Model
 {
+	public enum EntityType
+	{
+		PLAYER,
+		ENEMY,
+		HAZARD
+	}
 	public class Entity
 	{
 		//Not in bestiary file
@@ -24,6 +25,8 @@ namespace GMAssistant.Model
 		public string Conditions { get; set; }
 		[JsonIgnore]
 		public int CurrentHP { get; set; }
+		[JsonIgnore]
+		public EntityType EntityType { get; set; }
 
 
 		//In the bestiry file
@@ -35,7 +38,8 @@ namespace GMAssistant.Model
 		public string Rarity { get; set; }
 		public string Size { get; set; }
 		public string Speed { get; set; }
-		public int MaxHP {  get; set; }
+		[JsonPropertyName("HP")]
+		public int MaxHP { get; set; }
 		public int AC { get; set; }
 		public int Ref { get; set; }
 		public int Fort { get; set; }
@@ -44,9 +48,29 @@ namespace GMAssistant.Model
 		public string Traits { get; set; }
 		public string Actions { get; set; }
 		public string Spells { get; set; }
-		public string RIW {  get; set; }
+		public string RIW { get; set; }
 
+		// methods
+		public List<string> TraitList()
+		{
+			if (string.IsNullOrEmpty(Traits))
+				return Traits.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+			else return new List<string>();
+		}
+		public List<string> ActionList()
+		{
+			if (string.IsNullOrEmpty(Actions))
+				return Actions.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+			else return new List<string>();
+		}
+		public List<string> SpellList()
+		{
+			if (string.IsNullOrEmpty(Spells))
+				return Spells.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+			else return new List<string>();
+		}
 	}
+
 	[JsonSerializable(typeof(List<Entity>))]
 	public sealed partial class EntityContext : JsonSerializerContext
 	{

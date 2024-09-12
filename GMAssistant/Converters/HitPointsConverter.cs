@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GMAssistant.Model;
+﻿using System.Globalization;
 
 namespace GMAssistant.Converters
 {
@@ -14,7 +8,7 @@ namespace GMAssistant.Converters
 		{
 			int? currentHP = (int)value;
 			//int? MaxHP = (int)parameter;
-			return currentHP/5;
+			return currentHP / 5;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

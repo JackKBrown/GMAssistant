@@ -2,7 +2,7 @@
 
 namespace GMAssistant.ViewModel
 {
-	public partial class BaseViewModel:ObservableObject
+	public partial class BaseViewModel : ObservableObject
 	{
 		public BaseViewModel()
 		{

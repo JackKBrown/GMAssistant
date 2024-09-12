@@ -40,12 +40,11 @@
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="coffeebag.png" WidthRequest="66" />
                                         <StackLayout VerticalOptions="Center">
-                                            <Label
-                                                    Text="{Binding Name}"
-                                                    VerticalOptions="Center" />
-                                            <Label
-                                                    Text="{Binding Description}"
-                                                    VerticalOptions="Center" />
+                                            <Label Style="{StaticResource LabelLarge}"
+                                                   Text="{Binding Name}"
+                                                   VerticalOptions="Center" />
+                                            <Label Text="{Binding Description}"
+                                                   VerticalOptions="Center" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
@@ -55,10 +54,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </ScrollView>
-        <ImageButton WidthRequest="70" HeightRequest="70" CornerRadius="35"
-                HorizontalOptions="End" VerticalOptions="End" Margin="10"
-                Command="{Binding NewSessionCommand}" BorderColor="Black" BorderWidth="1"
-                IsEnabled="{Binding IsNotBusy}" BackgroundColor="{StaticResource PrimaryDark}">
+        <ImageButton Style="{StaticResource CircleIButton}" HorizontalOptions="End" 
+                     VerticalOptions="End" Margin="10" IsEnabled="{Binding IsNotBusy}"
+                     Command="{Binding NewSessionCommand}">
             <ImageButton.Source>
                 <FontImageSource
                     FontFamily="FASolid"
@@ -66,11 +64,6 @@
                     Color="Black"
                     Size="36"/>
             </ImageButton.Source>
-            <ImageButton.Shadow>
-                <Shadow Brush="Black"
-                Offset="10,10"
-                Opacity="0.4" />
-            </ImageButton.Shadow>
         </ImageButton>
     </Grid>
     

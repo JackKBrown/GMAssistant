@@ -51,6 +51,11 @@ namespace GMAssistant.Services
 			await Init();
 			if (item.ID != 0)
 			{
+				List<Encounter> encounters = await GetSessionEncounters(item.ID);
+				foreach (Encounter encounter in encounters)
+				{
+					DeleteEncounterAsync(encounter);
+				}
 				return await Database.DeleteAsync(item);
 			}
 			return 0;
@@ -80,6 +85,11 @@ namespace GMAssistant.Services
 			await Init();
 			if (item.ID != 0)
 			{
+				List<Entity> entities = await GetEncounterEnitities(item.ID);
+				foreach (Entity entity in entities)
+				{
+					DeleteEntityAsync(entity);
+				}
 				return await Database.DeleteAsync(item);
 			}
 			return 0;

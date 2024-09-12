@@ -2,14 +2,8 @@
 
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
-using GMAssistant.Model;
 using GMAssistant.Services;
-using GMAssistant.View;
 using MvvmHelpers;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Formats.Asn1;
-using System.Linq;
 
 namespace GMAssistant.ViewModel
 {
@@ -63,7 +57,7 @@ namespace GMAssistant.ViewModel
 		public void FilterItems()
 		{
 			ItemResults.Clear();
-			itemsFiltered=items.Where(
+			itemsFiltered = items.Where(
 				Item => Item.Level.Contains("6")).ToList();
 			ItemResults.AddRange(itemsFiltered.Take(_pageSize));
 
