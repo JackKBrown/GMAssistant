@@ -8,16 +8,19 @@
     Title="GMAssistant"
     FlyoutBackgroundColor="{StaticResource DarkParchment}">
 
-    <FlyoutItem Title="All Sessions" Icon="cube.png">
+    <FlyoutItem Title="All Sessions" Icon="{StaticResource bin }">
         <ShellContent Title="All Sessions" ContentTemplate="{DataTemplate view:AllSessions}" />
     </FlyoutItem>
     <FlyoutItem Title="All Encounters" Icon="cube.png">
         <ShellContent Title="All Encounters" ContentTemplate="{DataTemplate view:AllEncounters}" />
     </FlyoutItem>
-    <FlyoutItem Title="Item Shop" Icon="cube.png">
+    <FlyoutItem Title="All Items" Icon="cube.png">
         <ShellContent Title="Items" ContentTemplate="{DataTemplate view:ItemsPage}" />
-    </FlyoutItem>    
-    <FlyoutItem Title="Character Generator" Icon="cube.png">
+    </FlyoutItem>
+    <FlyoutItem Title="Shop Generator" Icon="cube.png">
+        <ShellContent Title="Items" ContentTemplate="{DataTemplate view:ShopGeneratorPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="NPC Generator" Icon="cube.png">
         <ShellContent Title="Items" ContentTemplate="{DataTemplate view:CharacterGenPage}" />
     </FlyoutItem>
 

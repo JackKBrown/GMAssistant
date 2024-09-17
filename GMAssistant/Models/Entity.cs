@@ -26,7 +26,7 @@ namespace GMAssistant.Model
 		[JsonIgnore]
 		public int CurrentHP { get; set; }
 		[JsonIgnore]
-		public EntityType EntityType { get; set; }
+		public EntityType EType { get; set; }
 
 
 		//In the bestiry file

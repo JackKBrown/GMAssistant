@@ -8,6 +8,9 @@
              xmlns:model="clr-namespace:GMAssistant.Model"
              x:DataType="viewmodel:EncounterViewModel"
              Title="{Binding CurrentEncounter.Name}">
+    <ContentPage.Resources>
+        <converter:PlayerTypeConverter x:Key="PlayerTypeConverter"/>
+    </ContentPage.Resources>
     <Grid RowDefinitions="auto, *">
         <VerticalStackLayout>
             <toolkit:Expander>
@@ -28,7 +31,8 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Entity">
                         <Grid ColumnDefinitions="*,16*,*">
-                            <Frame Style="{StaticResource Card}" Grid.Column="1">
+                            <Frame Style="{StaticResource Card}" Grid.Column="1" 
+                                   BackgroundColor="{Binding EType, Converter={StaticResource PlayerTypeConverter}}">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer 
                                         CommandParameter="{Binding .}"

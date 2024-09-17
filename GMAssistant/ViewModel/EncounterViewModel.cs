@@ -43,6 +43,7 @@ public partial class EncounterViewModel : BaseViewModel
 			Will = 0,
 			Actions = "",
 			EncounterID = CurrentEncounter.ID,
+			EType = EntityType.PLAYER,
 		};
 		await db.SaveEntitysAsync(entity);
 		Entities.Add(entity);
