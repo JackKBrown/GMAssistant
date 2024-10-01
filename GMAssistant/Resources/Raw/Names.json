@@ -1,0 +1,728 @@
+[
+	{
+		"Name": "Thorin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironhammer",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Borin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonebrow",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Durin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Flintbeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Grimnir",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Anvilstrike",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Rurik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Fireforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thrain",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Deepdelver",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kromgar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Blackshield",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Baldur",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thunderfist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thalrik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonebreaker",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Dwalin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironfoot",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Brannor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostbeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Haldir",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Oakenshield",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gorgrim",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Darkstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Morgrim",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Earthshaker",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ragnar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stoutarm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Drogan",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonefist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Vorin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Hammerfall",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Grendel",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironclad",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thrain",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Underforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Hrothgar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Coldstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kazrik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Runehammer",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Torin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Firebeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kaldor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Battlehammer",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Magni",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Boulderfist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Huldar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Deepforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kraggor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostmantle",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Falkrinn",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thunderstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Hagrim",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stormshield",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ulrik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironspine",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Vargan",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Emberfist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Dornic",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonehelm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gorrik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Firestrike",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thrandar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Strongarm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Skarnan",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Baelgar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Deepstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gravik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Hammerstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Torgrin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Boulderbeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kolgrim",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Steelarm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Rurik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Warhelm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Brogar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironfist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Uldrin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Flamebeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Grendin",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Copperforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Harnor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Emberforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gralkor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonegrip",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Durgran",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostshield",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Draknar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Blackforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Berrik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Embermantle",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Rurik",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Redbeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Haldor",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Darkmantle",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Brungar",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Shadowhelm",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Brynja",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironheart",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Helga",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonebraid",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thrainna",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thunderstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Sigrid",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Steelforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ylva",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Firebraid",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Astrid",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironcloak",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ragna",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Deepdelve",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Freya",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Battleforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Kelda",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stonefist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Lothira",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Emberforge",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gudrun",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostbeard",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Brunhild",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ironbrow",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thyra",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Darkshield",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Inga",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Strongstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Svala",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": null,
+		"Fli": "Svala",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Flintfist",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gretna",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Emberheart",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Ulfrun",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Goldvein",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Thalira",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Frostcloak",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Dagny",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Redaxe",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Aesa",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Stormhammer",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Gilda",
+		"Position": 1,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Deepstone",
+		"Position": 2,
+		"Ancestry": "Dwarven"
+	},
+	{
+		"Name": "Myra",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Sarrasri",
+		"Position": 2,
+		"Ancestry": "Human"
+	}
+]

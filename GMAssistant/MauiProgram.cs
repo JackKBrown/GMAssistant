@@ -40,7 +40,7 @@ namespace GMAssistant
 			builder.Services.AddSingleton<GMADatabase>();
 			builder.Services.AddSingleton<BestiaryService>();
 			builder.Services.AddSingleton<ItemService>();
-			builder.Services.AddSingleton<ShopDetailsService>();
+			builder.Services.AddSingleton<FluffService>();
 
 			builder.Services.AddTransient<SessionViewModel>();
 			builder.Services.AddTransient<EncounterViewModel>();

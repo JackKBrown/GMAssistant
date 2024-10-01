@@ -9,5 +9,8 @@
     <x:String x:Key="sort">&#xf0dc;</x:String>
     <x:String x:Key="dtwenty">&#xf6cf;</x:String>
     <x:String x:Key="bin">&#xf1f8;</x:String>
+    <x:String x:Key="sword">&#xf71d;</x:String>
+    <x:String x:Key="down">&#xf0d7;</x:String>
+    
 
 </ResourceDictionary>

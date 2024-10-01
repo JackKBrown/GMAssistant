@@ -30,6 +30,7 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	[ObservableProperty]
 	public string searchQuery;
 
+
 	public FilterPreferences FilterPreferences { get; } = new();
 	public ObservableRangeCollection<Entity> BestiaryResults { get; } = new();
 	public List<Entity> bestiary = new();

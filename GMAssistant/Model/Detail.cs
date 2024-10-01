@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace GMAssistant.Models
+namespace GMAssistant.Model
 {
 	public class Detail
 	{

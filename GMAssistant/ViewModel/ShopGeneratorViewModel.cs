@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
+using GMAssistant.Models;
 using GMAssistant.Services;
 using MvvmHelpers;
 using System.Collections.ObjectModel;
@@ -7,66 +9,73 @@ using System.Collections.ObjectModel;
 namespace GMAssistant.ViewModel;
 public partial class ShopGeneratorViewModel : BaseViewModel
 {
-	ShopDetailsService detailService;
+	FluffService detailService;
 	ItemService itemService;
-	public ObservableRangeCollection<Item> ItemResults { get; } = new();
+	public ObservableRangeCollection<Item> ShopItems { get; } = new();
 	public List<Item> items = new();
 	public List<Item> itemsFiltered = new();
 	int _pageSize = 20;
 
-	public ObservableCollection<String> ShopTypes { get; set; }
+	public ObservableCollection<ShopType> ShopTypes { get; set; }
+	[ObservableProperty]
+	public int[] shopLevels;
+	[ObservableProperty]
+	public string[] shopCatagories;
+	[ObservableProperty]
+	public int typeIndex;
+	[ObservableProperty]
+	public int levelIndex;
 
-	public ShopGeneratorViewModel(ShopDetailsService dService, ItemService iService)
+	public ShopGeneratorViewModel(FluffService dService, ItemService iService)
 	{
 		Title = "All Encounters Page";
 		detailService = dService;
 		itemService = iService;
-		//GetItems();
-		ShopTypes = new ObservableCollection<string>
-		{
-			"General",
-			"blacksmith",
-			"Apothecary"
-		};
+		GetItems();
+		ShopTypes = new ObservableCollection<ShopType>(Constants.ShopTypes);
 	}
 
 	[RelayCommand]
-	public async Task GenerateShopAsync()
+	public async Task ViewItemAsync()
 	{
 		throw new NotImplementedException();
 	}
 
 	[RelayCommand]
-	public async void GetItems()
+	public async Task GenerateShopAsync()
 	{
-		if (ItemResults.Count == 0)
-		{
-			items = await itemService.GetPathfinderItems();
-			itemsFiltered = items;
-			//ItemResults.AddRange(itemsFiltered.Take(_pageSize));
-		}
+		FilterItems();
 	}
 
 	[RelayCommand]
-	public void GetNextItems()
+	public async void GetItems()
 	{
-		if (ItemResults.Count > 0)
-		{
-			ItemResults.AddRange(itemsFiltered.Skip(ItemResults.Count).Take(_pageSize));
-		}
-		else
-		{
-			GetItems();
-		}
+		items = await itemService.GetPathfinderItems();
+		itemsFiltered = items;
+		ShopCatagories = new List<string>(items.Select(x => x.Category).Distinct()).ToArray();
+		ShopLevels = new List<int>(items.Select(x => x.Level).Distinct()).ToArray();
+		LevelIndex = 8;
+		TypeIndex = -1;
 	}
 
 	[RelayCommand]
 	public void FilterItems()
 	{
-		ItemResults.Clear();
+		ShopItems.Clear();
+		int level = ShopLevels[LevelIndex];
+		int MinLevel = level - 2;
+		int MaxLevel = level + 2;
 		itemsFiltered = items.Where(
-			Item => Item.Level.Contains("6")).ToList();
-		ItemResults.AddRange(itemsFiltered.Take(_pageSize));
+			Item => (Item.Level < MaxLevel && Item.Level < MinLevel)).ToList();
+		if (TypeIndex > 0)
+		{
+			ShopType type = ShopTypes[TypeIndex];
+			itemsFiltered = itemsFiltered.Where(
+				Item => type.Tags.Contains(Item.Category)).ToList();
+		}
+		Random rng = new Random();
+		itemsFiltered = itemsFiltered.OrderBy(_ => rng.Next()).ToList();
+		ShopItems.AddRange(itemsFiltered.Take(_pageSize));
 
 	}
 }

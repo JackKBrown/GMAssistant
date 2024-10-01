@@ -8,7 +8,12 @@ public partial class ShopGeneratorPage : ContentPage
 	public ShopGeneratorPage(ShopGeneratorViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = ViewModel;
+		BindingContext = viewModel;
 		ViewModel = viewModel;
+	}
+
+	private void levelpicker_SelectedIndexChanged(object sender, EventArgs e)
+	{
+
 	}
 }
