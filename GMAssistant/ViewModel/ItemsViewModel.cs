@@ -5,6 +5,8 @@ using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
 using GMAssistant.Services;
 using MvvmHelpers;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace GMAssistant.ViewModel
 {
@@ -12,7 +14,9 @@ namespace GMAssistant.ViewModel
 	{
 		GMADatabase database;
 		ItemService itemService;
-		public ObservableRangeCollection<Item> ItemResults { get; } = new();
+
+		[ObservableProperty]
+		public ObservableRangeCollection<Item> itemResults;
 		public List<Item> items = new();
 		public List<Item> itemsFiltered = new();
 		int _pageSize = 20;
@@ -20,11 +24,11 @@ namespace GMAssistant.ViewModel
 		[ObservableProperty]
 		public int[] shopLevels;
 		[ObservableProperty]
-		public string[] catagories;
+		public ObservableCollection<BoolProperty> catagories;
 		[ObservableProperty]
-		public string[] subCatagories;
+		public ObservableCollection<BoolProperty> subCatagories;
 		[ObservableProperty]
-		public string[] rarities;
+		public ObservableCollection<BoolProperty> rarities;
 
 
 		[ObservableProperty]
@@ -38,21 +42,35 @@ namespace GMAssistant.ViewModel
 			Title = "All Encounters Page";
 			database = dataBase;
 			itemService = iService;
-			GetItems();
+			ItemResults = new ObservableRangeCollection<Item>();
+			GetItemsAsync();
 		}
 
 		[RelayCommand]
-		public async void GetItems()
+		public async void GetItemsAsync()
 		{
 			if (items.Count == 0)
 			{
 				items = await itemService.GetPathfinderItems();
 
 				//setup filter options
-				Catagories = new List<string>(items.Select(x => x.Category).Distinct()).ToArray();
-				SubCatagories = new List<string>(items.Select(x => x.Subcategory).Distinct()).ToArray();
+				var TempSubCatagories = new List<string>(items.Select(x => x.Subcategory).Distinct()).ToArray();
+				SubCatagories = new ObservableRangeCollection<BoolProperty>();
+				foreach (var subcat in TempSubCatagories)
+					SubCatagories.Add(new BoolProperty { Name = subcat, Selected = true });
+				// need to call the notify property changed here
+
 				ShopLevels = new List<int>(items.Select(x => x.Level).Distinct()).ToArray();
-				Rarities = new List<string>(items.Select(x => x.Rarity).Distinct()).ToArray();
+
+				var TempCatagories = new List<string>(items.Select(x => x.Category).Distinct()).ToArray();
+				Catagories = new ObservableRangeCollection<BoolProperty>();
+				foreach (var cat in TempCatagories)
+					Catagories.Add(new BoolProperty { Name = cat, Selected = true });
+
+				var TempRarities = new List<string>(items.Select(x => x.Rarity).Distinct()).ToArray();
+				Rarities = new ObservableRangeCollection<BoolProperty>();
+				foreach (var rarity in TempRarities)
+					Rarities.Add(new BoolProperty { Name = rarity, Selected = true });
 
 				MinLevelIndex = 0;
 				MaxLevelIndex = ShopLevels.Count() - 1;
@@ -66,13 +84,14 @@ namespace GMAssistant.ViewModel
 		[RelayCommand]
 		public void GetNextItems()
 		{
+			Debug.WriteLine("getting next items");
 			if (ItemResults.Count > 0)
 			{
 				ItemResults.AddRange(itemsFiltered.Skip(ItemResults.Count).Take(_pageSize));
 			}
 			else
 			{
-				GetItems();
+				GetItemsAsync();
 			}
 		}
 
@@ -80,8 +99,25 @@ namespace GMAssistant.ViewModel
 		public void FilterItems()
 		{
 			ItemResults.Clear();
+			int minlevel = ShopLevels[MinLevelIndex];
+			int maxlevel = ShopLevels[MaxLevelIndex];
+			List<string> selectedCatagories = Catagories.Where(
+				AC => AC.Selected).Select(AC => AC.Name).ToList();
+			List<string> selectedSubCatagories = SubCatagories.Where(
+				AC => AC.Selected).Select(AC => AC.Name).ToList();
+			List<string> selectedRarities = Rarities.Where(
+				AC => AC.Selected).Select(AC => AC.Name).ToList();
+
 			itemsFiltered = items.Where(
-				Item => Item.Level == 6).ToList();
+				Item => Item.Level >= minlevel).ToList();
+			itemsFiltered = itemsFiltered.Where(
+				Item => Item.Level <= maxlevel).ToList();
+			itemsFiltered = itemsFiltered.Where(
+				Item => selectedCatagories.Contains(Item.Category)).ToList();
+			itemsFiltered = itemsFiltered.Where(
+				Item => selectedSubCatagories.Contains(Item.Subcategory)).ToList();
+			itemsFiltered = itemsFiltered.Where(
+				Item => selectedRarities.Contains(Item.Rarity)).ToList();
 			ItemResults.AddRange(itemsFiltered.Take(_pageSize));
 
 		}

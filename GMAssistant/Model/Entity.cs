@@ -50,24 +50,46 @@ namespace GMAssistant.Model
 		public string Spells { get; set; }
 		public string RIW { get; set; }
 
-		// methods
-		public List<string> TraitList()
+		[JsonIgnore]
+		public List<string> TraitList
 		{
-			if (string.IsNullOrEmpty(Traits))
-				return Traits.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
-			else return new List<string>();
+			get
+			{
+				if (!string.IsNullOrEmpty(Traits))
+					return Traits.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+				else return new List<string>();
+			}
 		}
-		public List<string> ActionList()
+
+		[JsonIgnore]
+		public List<string> ActionList
 		{
-			if (string.IsNullOrEmpty(Actions))
-				return Actions.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
-			else return new List<string>();
+			get
+			{
+				if (!string.IsNullOrEmpty(Actions))
+					return Actions.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+				else return new List<string>();
+			}
 		}
-		public List<string> SpellList()
+
+		[JsonIgnore]
+		public List<string> SpellList
 		{
-			if (string.IsNullOrEmpty(Spells))
-				return Spells.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
-			else return new List<string>();
+			get
+			{
+				if (!string.IsNullOrEmpty(Spells))
+					return Spells.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+				else return new List<string>();
+			}
+		}
+
+		[JsonIgnore]
+		public List<string> AllList
+		{
+			get
+			{
+				return new List<string>(ActionList.Concat(SpellList));
+			}
 		}
 	}
 

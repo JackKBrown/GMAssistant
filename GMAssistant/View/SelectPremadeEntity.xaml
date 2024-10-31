@@ -9,55 +9,86 @@
              x:DataType="viewmodel:SelectPremadeEntityViewModel"
              Title="{Binding Title}">
 
-    <Grid RowDefinitions="Auto,*">
-        <VerticalStackLayout Grid.Row="0">
-            <SearchBar Margin="5" Placeholder="Search Bestiary ..." SearchCommand="{Binding FilterCommand}" Text="{Binding SearchQuery}"/>
-            <toolkit:Expander Margin="10">
-                <toolkit:Expander.Header>
-                    <HorizontalStackLayout>
-                        <scripts:FontAwesomeLabel
-                 Text="{StaticResource sort}"
-                  UseSolidFont="True"
-                   FontSize="40"
-                    HorizontalOptions="Center" />
-                        <Label Text="Filters: " FontSize="24" VerticalOptions="Center" Margin="5"/>
-                    </HorizontalStackLayout>
-                </toolkit:Expander.Header>
-                <toolkit:Expander.Content>
-                    <Border Padding="10" Stroke="{StaticResource Gray900}"
-                             StrokeThickness="1"
-                             StrokeShape="RoundRectangle 10,10,10,10">
-                        <VerticalStackLayout>
-                            <HorizontalStackLayout VerticalOptions="Center">
-                            <Label Text="Level:"/>
-                            <Label Text="Max "/>
-                            <Entry Text="{Binding MaxLevel}" Keyboard="Numeric"/>
-                            <Label Text="Min "/>
-                            <Entry Text="{Binding MinLevel}" Keyboard="Numeric"/>
-                        </HorizontalStackLayout>
+    <!-- Search and Filters Section (scrollable part) -->
+        <ScrollView VerticalOptions="FillAndExpand">
+            <VerticalStackLayout>
+                <!-- SearchBar -->
+                <SearchBar Margin="5" Placeholder="Search Bestiary ..." SearchCommand="{Binding FilterCommand}" Text="{Binding SearchQuery}"/>
+
+                <!-- Filters -->
+                <toolkit:Expander Margin="10">
+                    <toolkit:Expander.Header>
                         <HorizontalStackLayout>
-                            <Label Text="Search Trait"/>
-                            <Entry Text="{Binding Trait}"/>
+                            <scripts:FontAwesomeLabel
+                                Text="{StaticResource sort}"
+                                UseSolidFont="True"
+                                FontSize="40"
+                                HorizontalOptions="Center" />
+                            <Label Text="Filters: " FontSize="24" VerticalOptions="Center" Margin="5"/>
                         </HorizontalStackLayout>
-                        
-                    </VerticalStackLayout>
-                    </Border>
-                </toolkit:Expander.Content>
-            </toolkit:Expander>
-        </VerticalStackLayout>
-        <!--ScrollView Grid.Row="1"-->
-        <CollectionView ItemsSource="{Binding BestiaryResults}" VerticalOptions="FillAndExpand" RemainingItemsThreshold="1"
-                            RemainingItemsThresholdReachedCommand="{Binding GetNextBestiaryAsyncCommand}" Grid.Row="1">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Session">
-                    <HorizontalStackLayout Padding="10" >
-                        <Label Text="{Binding Name}" FontSize="24"/>
-                        <Button Text="Select" CommandParameter="{Binding .}"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
-                    </HorizontalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        <!--/ScrollView-->
-    </Grid>
+                    </toolkit:Expander.Header>
+                    <toolkit:Expander.Content>
+                        <Border Padding="10" Stroke="{StaticResource Gray900}" StrokeThickness="1" StrokeShape="RoundRectangle 10,10,10,10">
+                            <VerticalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Label Text="Max Level"/>
+                                    <Picker ItemsSource="{Binding Levels}" SelectedIndex="{Binding MaxLevelIndex}"/>
+                                    <Label Text="Min Level"/>
+                                    <Picker ItemsSource="{Binding Levels}" SelectedIndex="{Binding MinLevelIndex}"/>
+                                </HorizontalStackLayout>
+                                <toolkit:Expander>
+                                    <toolkit:Expander.Header>
+                                    <Grid Padding="10" RowDefinitions="Auto,Auto">
+                                        <HorizontalStackLayout>
+                                            <scripts:FontAwesomeLabel
+                                                    Text="{StaticResource down}"
+                                                    UseSolidFont="True"
+                                                    FontSize="58"
+                                                    HorizontalOptions="Center" />
+                                            <Label Text="Traits: " FontSize="18" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout HorizontalOptions="End">
+                                            <Button Text="None" Command="{Binding SelectNoneCommand}" VerticalOptions="Center"/>
+                                            <Button Text="All" Command="{Binding SelectAllCommand}" VerticalOptions="Center"/>
+                                        </HorizontalStackLayout>
+                                        <BoxView HeightRequest="1" BackgroundColor="Black" Grid.Row="1"/>
+                                    </Grid>
+                                </toolkit:Expander.Header>
+                                    <toolkit:Expander.Content>
+                                        <FlexLayout BindableLayout.ItemsSource="{Binding Traits}" Wrap="Wrap">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate x:DataType="model:BoolProperty">
+                                                    <Frame Style ="{StaticResource Card}" Padding="5">
+                                                        <HorizontalStackLayout Padding="10,0,0,0">
+                                                            <CheckBox IsChecked="{Binding Selected}" VerticalOptions="Center"/>
+                                                            <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                                                        </HorizontalStackLayout>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </FlexLayout>
+                                    </toolkit:Expander.Content>
+                                </toolkit:Expander>
+                            </VerticalStackLayout>
+                        </Border>
+                    </toolkit:Expander.Content>
+                </toolkit:Expander>
+                <!-- CollectionView Section (not wrapped in a ScrollView) -->
+                <CollectionView ItemsSource="{Binding BestiaryResults}" 
+                                VerticalOptions="FillAndExpand"
+                                RemainingItemsThreshold="1"
+                                RemainingItemsThresholdReachedCommand="{Binding GetNextBestiaryAsyncCommand}"
+                                HeightRequest="1000">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Session">
+                            <HorizontalStackLayout Padding="10">
+                                <Label Text="{Binding Name}" FontSize="24"/>
+                                <Button Text="Select" CommandParameter="{Binding .}" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectPremadeEntityViewModel}}, Path=SelectedItemCommand}"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
 </ContentPage>

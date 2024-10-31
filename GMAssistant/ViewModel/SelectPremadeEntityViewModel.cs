@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
 using GMAssistant.Services;
 using MvvmHelpers;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace GMAssistant.ViewModel;
@@ -11,16 +12,6 @@ namespace GMAssistant.ViewModel;
 [QueryProperty(nameof(Encounterid), "encounterid")]
 public partial class SelectPremadeEntityViewModel : BaseViewModel
 {
-
-	//Filter options
-	[ObservableProperty]
-	public int maxLevel = 30;
-	[ObservableProperty]
-	public int minLevel = 1;
-
-	[ObservableProperty]
-	public string trait = "";
-
 	// might not need to load this if it instead returns the details?
 	readonly GMADatabase db;
 	readonly BestiaryService bService;
@@ -30,6 +21,16 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	[ObservableProperty]
 	public string searchQuery;
 
+	//Filter options
+	[ObservableProperty]
+	ObservableCollection<BoolProperty> traits;
+
+	[ObservableProperty]
+	public int[] levels;
+	[ObservableProperty]
+	public int minLevelIndex;
+	[ObservableProperty]
+	public int maxLevelIndex;
 
 	public FilterPreferences FilterPreferences { get; } = new();
 	public ObservableRangeCollection<Entity> BestiaryResults { get; } = new();
@@ -48,10 +49,20 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	[RelayCommand]
 	public async void GetBestiaryAsync()
 	{
-		if (BestiaryResults.Count == 0)
+		if (bestiary.Count == 0)
 		{
 			bestiary = await bService.GetPathfinderBestiary();
 			filteredBestiary = bestiary;
+
+			//setup filter options
+			var TempTraits = new List<string>(bestiary.SelectMany(x => x.TraitList).Distinct()).ToArray();
+			Traits = new ObservableCollection<BoolProperty>();
+			foreach (var trait in TempTraits)
+				Traits.Add(new BoolProperty { Name = trait, Selected = true });
+			// need to call the notify property changed here
+
+			Levels = new List<int>(bestiary.Select(x => x.Level).Distinct().OrderDescending().Reverse()).ToArray();
+
 			BestiaryResults.AddRange(filteredBestiary.Take(_pageSize));
 		}
 	}
@@ -74,14 +85,18 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	{
 		List<Entity> bestiaryTemp = bestiary.Where(
 			Entity => Entity.Name.ToLower().Contains(SearchQuery.ToLower())).ToList();
+		int maxLevel = Levels[MaxLevelIndex];
+		int minLevel = Levels[MinLevelIndex];
 
 		bestiaryTemp = bestiaryTemp.Where(
-			Entity => (Entity.Level < maxLevel && Entity.Level > MinLevel)).ToList();
+			Entity => (Entity.Level < maxLevel && Entity.Level > minLevel)).ToList();
 
-		if (Trait != "")
+		List<string> selectedTraits = Traits.Where(
+			trait => trait.Selected).Select(AC => AC.Name).ToList();
+		if (selectedTraits.Count > 0 || selectedTraits.Count == Traits.Count)
 		{
 			bestiaryTemp = bestiaryTemp.Where(
-				Entity => Entity.Traits.ToLower().Contains(Trait.ToLower())).ToList();
+				Entity => (Entity.TraitList.Intersect(selectedTraits).ToList().Count > 0)).ToList();
 		}
 
 		filteredBestiary = bestiaryTemp;
@@ -108,5 +123,17 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 			{
 				ViewModel.Preferences = FilterPreferences;
 			});
+	}
+
+	[RelayCommand]
+	public void SelectNone()
+	{
+		foreach (BoolProperty trait in Traits) trait.Selected = false;
+	}
+
+	[RelayCommand]
+	public void SelectAll()
+	{
+		foreach (BoolProperty trait in Traits) trait.Selected = true;
 	}
 }

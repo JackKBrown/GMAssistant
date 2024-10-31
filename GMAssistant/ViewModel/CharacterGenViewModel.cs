@@ -53,6 +53,7 @@ public partial class CharacterGenViewModel : BaseViewModel
 		lastNames = lastNames.OrderBy(_ => rng.Next()).ToList();
 		for (int i = 0; i < NumberOfNames; i++)
 		{
+			if (firstNames.Count == i) { break; }
 			string name = firstNames[i].Name + " " + lastNames[i].Name;
 			FullNames.Add(name);
 		}
@@ -60,7 +61,7 @@ public partial class CharacterGenViewModel : BaseViewModel
 	public List<NamePart> FilterNameParts()
 	{
 
-		List<string> selectedAncestries = nameAncestries.Where(
+		List<string> selectedAncestries = NameAncestries.Where(
 			AC => AC.Selected).Select(AC => AC.Name).ToList();
 		List<NamePart> filteredNameParts = nameParts.Where(
 			NP => selectedAncestries.Contains(NP.Ancestry)).ToList();

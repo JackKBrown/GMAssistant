@@ -12,6 +12,27 @@ public partial class ExtraInfo : Popup
 		BindingContext = extraViewModel;
 		viewModel = extraViewModel;
 		viewModel.Finished += OnSelectLoaded;
+		SetPopupSize();
+	}
+
+	private void SetPopupSize()
+	{
+		// Get the current window size
+		var window = Application.Current?.MainPage?.Window;
+
+		if (window != null)
+		{
+			var windowWidth = window.Width;
+			var windowHeight = window.Height;
+
+			// Calculate 80% of the window's width and height
+			var popupWidth = windowWidth * 0.8;
+			var popupHeight = windowHeight * 0.8;
+
+			// Set the size of the container (Grid) inside the popup
+			PopupContainer.WidthRequest = popupWidth;
+			PopupContainer.HeightRequest = popupHeight;
+		}
 	}
 
 	void OnSelectLoaded(object? sender, EventArgs e)

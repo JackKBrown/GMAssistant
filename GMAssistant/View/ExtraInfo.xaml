@@ -15,43 +15,56 @@
             <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="True" />
         </Style>
     </toolkit:Popup.Resources>
-    <Border Padding="5" Stroke="Transparent" HeightRequest="500" WidthRequest="300">
+    <Border Padding="5" Stroke="Transparent" x:Name="PopupContainer">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="30"/>
         </Border.StrokeShape>
         <Grid>
-            
-        <VerticalStackLayout Padding="5">
-            <HorizontalStackLayout Padding="2">
-                <Label Text="Name: "/>
-                <Editor Text="name"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Padding="2">
-                <Label Text="Init: "/>
-                <Editor Text="{Binding CurrrentEntity.Initiative}"/>
-                <Label Text="({Binding Details.Init})" />
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Padding="2">
-                <Label Text="HP: "/>
-                <Editor Text="{Binding CurrrentEntity.CurrentHP}"/>
-                <Label Text="/"/>
-                <Editor Text="{Binding CurrrentEntity.MaxHP}"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Padding="2" HorizontalOptions="Center">
-                <Label Text="Ref: "/>
-                <Editor Text="{Binding CurrrentEntity.Ref}"/>
-                <Label Text="Fort: "/>
-                <Editor Text="{Binding CurrrentEntity.Fort}"/>
-                <Label Text="Will: "/>
-                <Editor Text="{Binding CurrrentEntity.Will}"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
-        <HorizontalStackLayout Padding="2" VerticalOptions="End" HorizontalOptions="Center">
+
+            <VerticalStackLayout Padding="5">
+                <HorizontalStackLayout Padding="2">
+                    <Label Text="Name: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding CurrrentEntity.Name}" VerticalOptions="Center"/>
+                    <Label Text="Init: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding CurrrentEntity.Initiative}" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Padding="2">
+
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Padding="2">
+                    <Label Text="HP: " VerticalOptions="Center"/>
+                    <Entry Text="{Binding CurrrentEntity.CurrentHP}" VerticalOptions="Center"/>
+                    <Label Text="/" VerticalOptions="Center"/>
+                    <Entry Text="{Binding CurrrentEntity.MaxHP}" VerticalOptions="Center"/>
+                </HorizontalStackLayout>
+                <Grid ColumnDefinitions="*,*,*">
+                    <HorizontalStackLayout Grid.Column="0">
+                        <Label Text="Ref: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrrentEntity.Ref}" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="1">
+                        <Label Text="Fort: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrrentEntity.Fort}" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Grid.Column="2">
+                        <Label Text="Will: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrrentEntity.Will}" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                </Grid>
+                <CollectionView ItemsSource="{Binding CurrrentEntity.AllList}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="x:String">
+                            <Label Text="{Binding .}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+            <HorizontalStackLayout Padding="2" VerticalOptions="End" HorizontalOptions="Center">
                 <Button Text="Reroll Initiative"
                         Command="{Binding RollInitCommand}"/>
                 <Button Text="Delete "
                         Command="{Binding DeleteEntityCommand}"/>
-        </HorizontalStackLayout>
+            </HorizontalStackLayout>
         </Grid>
     </Border>
 
