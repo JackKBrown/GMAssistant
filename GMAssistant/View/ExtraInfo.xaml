@@ -20,44 +20,55 @@
             <RoundRectangle CornerRadius="30"/>
         </Border.StrokeShape>
         <Grid>
+            <VerticalStackLayout>
+                
+                <VerticalStackLayout Padding="5" x:Name="InfoStack">
+                    <HorizontalStackLayout Padding="2">
+                        <Label Text="Name: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrentEntity.Name}" VerticalOptions="Center"/>
+                        <Label Text="Init: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrentEntity.Initiative}" VerticalOptions="Center"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Padding="2">
 
-            <VerticalStackLayout Padding="5">
-                <HorizontalStackLayout Padding="2">
-                    <Label Text="Name: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding CurrrentEntity.Name}" VerticalOptions="Center"/>
-                    <Label Text="Init: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding CurrrentEntity.Initiative}" VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout Padding="2">
-
-                </HorizontalStackLayout>
-                <HorizontalStackLayout Padding="2">
-                    <Label Text="HP: " VerticalOptions="Center"/>
-                    <Entry Text="{Binding CurrrentEntity.CurrentHP}" VerticalOptions="Center"/>
-                    <Label Text="/" VerticalOptions="Center"/>
-                    <Entry Text="{Binding CurrrentEntity.MaxHP}" VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-                <Grid ColumnDefinitions="*,*,*">
-                    <HorizontalStackLayout Grid.Column="0">
-                        <Label Text="Ref: " VerticalOptions="Center"/>
-                        <Entry Text="{Binding CurrrentEntity.Ref}" VerticalOptions="Center"/>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout Grid.Column="1">
-                        <Label Text="Fort: " VerticalOptions="Center"/>
-                        <Entry Text="{Binding CurrrentEntity.Fort}" VerticalOptions="Center"/>
+                    <HorizontalStackLayout Padding="2">
+                        <Label Text="HP: " VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrentEntity.CurrentHP}" VerticalOptions="Center"/>
+                        <Label Text="/" VerticalOptions="Center"/>
+                        <Entry Text="{Binding CurrentEntity.MaxHP}" VerticalOptions="Center"/>
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout Grid.Column="2">
-                        <Label Text="Will: " VerticalOptions="Center"/>
-                        <Entry Text="{Binding CurrrentEntity.Will}" VerticalOptions="Center"/>
-                    </HorizontalStackLayout>
-                </Grid>
-                <CollectionView ItemsSource="{Binding CurrrentEntity.AllList}">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="x:String">
-                            <Label Text="{Binding .}"/>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    <Grid ColumnDefinitions="*,*,*">
+                        <HorizontalStackLayout Grid.Column="0">
+                            <Label Text="Ref: " VerticalOptions="Center"/>
+                            <Entry Text="{Binding CurrentEntity.Ref}" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Column="1">
+                            <Label Text="Fort: " VerticalOptions="Center"/>
+                            <Entry Text="{Binding CurrentEntity.Fort}" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout Grid.Column="2">
+                            <Label Text="Will: " VerticalOptions="Center"/>
+                            <Entry Text="{Binding CurrentEntity.Will}" VerticalOptions="Center"/>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <CollectionView HorizontalOptions="Center" ItemsSource="{Binding EntityOptions}" ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodel:EntInt">
+                                <RadioButton Content="{Binding Name}" Value="{Binding Value}" CheckedChanged="RadioButton_CheckedChanged" IsChecked="{Binding IsChecked}"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+                    <CollectionView ItemsSource="{Binding CurrentEntity.AllList}" x:Name="AbilityCV">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="x:String">
+                            <FlexLayout Wrap="Wrap" Direction="Row">
+                                <Label Text="{Binding .}"/>
+                            </FlexLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
             </VerticalStackLayout>
             <HorizontalStackLayout Padding="2" VerticalOptions="End" HorizontalOptions="Center">
                 <Button Text="Reroll Initiative"

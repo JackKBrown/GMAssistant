@@ -26,6 +26,7 @@ namespace GMAssistant
 			builder.Services.AddSingleton<AllSessions>();
 			builder.Services.AddSingleton<AllEncounters>();
 			builder.Services.AddSingleton<SelectPremadeEntity>();
+			builder.Services.AddSingleton<SelectSavedEntity>();
 			builder.Services.AddSingleton<ItemsPage>();
 			builder.Services.AddSingleton<CharacterGenPage>();
 			builder.Services.AddSingleton<ShopGeneratorPage>();
@@ -33,6 +34,7 @@ namespace GMAssistant
 			builder.Services.AddSingleton<AllSessionsViewModel>();
 			builder.Services.AddSingleton<AllEncountersViewModel>();
 			builder.Services.AddSingleton<SelectPremadeEntityViewModel>();
+			builder.Services.AddSingleton<SelectSavedEntityViewModel>();
 			builder.Services.AddSingleton<ItemsViewModel>();
 			builder.Services.AddSingleton<CharacterGenViewModel>();
 			builder.Services.AddSingleton<ShopGeneratorViewModel>();

@@ -1,30 +1,71 @@
 ﻿using SQLite;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
 namespace GMAssistant.Model
 {
 	public enum EntityType
 	{
-		PLAYER,
-		ENEMY,
-		HAZARD
+		Ally = 0,
+		Enemy = 1,
+		Neutral = 2,
+		Hazard = 3
 	}
-	public class Entity
+	public class Entity : INotifyPropertyChanged
 	{
 		//Not in bestiary file
 		[JsonIgnore]
 		[PrimaryKey, AutoIncrement]
 		public int ID { get; set; }
+
+		private int _initiative;
 		[JsonIgnore]
-		public int Initiative { get; set; }
+		public int Initiative
+		{
+			get => _initiative;
+			set
+			{
+				if (_initiative != value)
+				{
+					_initiative = value;
+					OnPropertyChanged();  // Notify UI about the change
+				}
+			}
+		}
 		[JsonIgnore]
 		public int EncounterID { get; set; }
 		[JsonIgnore]
 		public string Details { get; set; }
+		private string _conditions;
 		[JsonIgnore]
-		public string Conditions { get; set; }
+		public string Conditions
+		{
+			get => _conditions;
+			set
+			{
+				if (_conditions != value)
+				{
+					_conditions = value;
+					OnPropertyChanged();  // Notify UI about the change
+				}
+			}
+		}
+
+		private int _currentHP;
 		[JsonIgnore]
-		public int CurrentHP { get; set; }
+		public int CurrentHP
+		{
+			get => _currentHP;
+			set
+			{
+				if (_currentHP != value)
+				{
+					_currentHP = value;
+					OnPropertyChanged();  // Notify UI about the change
+				}
+			}
+		}
 		[JsonIgnore]
 		public EntityType EType { get; set; }
 
@@ -90,6 +131,20 @@ namespace GMAssistant.Model
 			{
 				return new List<string>(ActionList.Concat(SpellList));
 			}
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		public Entity Clone()
+		{
+			Entity clone = (Entity)MemberwiseClone();
+			clone.ID = 0;
+			return clone;
 		}
 	}
 

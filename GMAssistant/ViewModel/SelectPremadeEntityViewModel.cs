@@ -43,7 +43,8 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 		db = database;
 		bService = bestiaryService;
 		pService = popupService;
-		GetNextBestiaryAsync();
+		MinLevelIndex = 0;
+		GetNextBestiary();
 	}
 
 	[RelayCommand]
@@ -63,11 +64,12 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 
 			Levels = new List<int>(bestiary.Select(x => x.Level).Distinct().OrderDescending().Reverse()).ToArray();
 
+			MaxLevelIndex = Levels.Length - 1;
 			BestiaryResults.AddRange(filteredBestiary.Take(_pageSize));
 		}
 	}
 	[RelayCommand]
-	public async void GetNextBestiaryAsync()
+	public void GetNextBestiary()
 	{
 		if (BestiaryResults.Count > 0)
 		{
@@ -79,12 +81,24 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 		}
 	}
 
+	[RelayCommand]
+	public void FlipSelected(BoolProperty bProp)
+	{
+		bProp.Selected = !bProp.Selected;
+	}
+
 
 	[RelayCommand]
-	public async void Filter()
+	public void Filter()
 	{
-		List<Entity> bestiaryTemp = bestiary.Where(
-			Entity => Entity.Name.ToLower().Contains(SearchQuery.ToLower())).ToList();
+		Debug.WriteLine("filtering");
+		List<Entity> bestiaryTemp = bestiary;
+
+		if (!String.IsNullOrEmpty(SearchQuery))
+		{
+			bestiaryTemp = bestiaryTemp.Where(
+				Entity => Entity.Name.ToLower().Contains(SearchQuery.ToLower())).ToList();
+		}
 		int maxLevel = Levels[MaxLevelIndex];
 		int minLevel = Levels[MinLevelIndex];
 
@@ -98,7 +112,7 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 			bestiaryTemp = bestiaryTemp.Where(
 				Entity => (Entity.TraitList.Intersect(selectedTraits).ToList().Count > 0)).ToList();
 		}
-
+		Debug.WriteLine(filteredBestiary.Count);
 		filteredBestiary = bestiaryTemp;
 		if (BestiaryResults.Count > 0)
 			BestiaryResults.Clear();
@@ -128,6 +142,7 @@ public partial class SelectPremadeEntityViewModel : BaseViewModel
 	[RelayCommand]
 	public void SelectNone()
 	{
+		Debug.WriteLine("selecting noine");
 		foreach (BoolProperty trait in Traits) trait.Selected = false;
 	}
 

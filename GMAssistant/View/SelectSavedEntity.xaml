@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:scripts="clr-namespace:GMAssistant.Scripts"
+             xmlns:converter="clr-namespace:GMAssistant.Converters"
+             x:Class="GMAssistant.View.SelectSavedEntity"
+             xmlns:model="clr-namespace:GMAssistant.Model"
+             xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             x:DataType="viewmodel:SelectSavedEntityViewModel"
+             Title="{Binding Title}">
+    <Grid>
+        <CollectionView ItemsSource="{Binding SavedEntities}" VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Entity">
+                    <Grid ColumnDefinitions="*,8*,*" Padding="3">
+                        <Frame Style="{StaticResource Card}" Grid.Column="1">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}" 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectSavedEntityViewModel}}, Path=SelectedItemCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid>
+                                <HorizontalStackLayout HorizontalOptions="End">
+                                    <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+
+                                    <VerticalStackLayout >
+                                        <Label Text="Level" FontSize="8"/>
+                                        <Label Text="{Binding Level}" HorizontalOptions="Center"/>
+
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

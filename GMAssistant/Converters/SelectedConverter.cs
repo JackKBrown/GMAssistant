@@ -1,29 +1,15 @@
-﻿using System.Diagnostics;
-
-namespace GMAssistant.Converters
+﻿namespace GMAssistant.Converters
 {
-	public class PlayerTypeConverter : IValueConverter
+	public class SelectedConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
 		{
 
 			//< Color x: Key = "GreenParchment" >#AAFFAA</Color>
 			//< Color x: Key = "RedParchment" >#FF8a8a</Color>
-			Debug.WriteLine("convertion value");
-			Debug.WriteLine(value.ToString());
-			switch (value.ToString())
-			{
-				case "Ally":
-					return "#AAFFAA";
-				case "Hazard":
-					return "#FF8a8a";
-				case "Enemy":
-					return "#FF8a8a";
-				case "Neutral":
-					return "#FF8a8a";
-			}
-
-			return "#FFFFDD";
+			bool selected = (bool)value;
+			if (selected) { return "#FF0000"; }
+			return "#FFFFFF";
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -34,3 +20,4 @@ namespace GMAssistant.Converters
 		}
 	}
 }
+

@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Views;
 using GMAssistant.ViewModel;
+using System.Diagnostics;
 
 namespace GMAssistant.View;
 
@@ -19,6 +20,7 @@ public partial class ExtraInfo : Popup
 	{
 		// Get the current window size
 		var window = Application.Current?.MainPage?.Window;
+		//var abilitycv = Application.Current?.MainPage?.
 
 		if (window != null)
 		{
@@ -32,6 +34,8 @@ public partial class ExtraInfo : Popup
 			// Set the size of the container (Grid) inside the popup
 			PopupContainer.WidthRequest = popupWidth;
 			PopupContainer.HeightRequest = popupHeight;
+
+			AbilityCV.HeightRequest = 0.7 * popupHeight;
 		}
 	}
 
@@ -44,6 +48,25 @@ public partial class ExtraInfo : Popup
 	{
 		await viewModel.SaveChangesAsync();
 		await base.OnClosed(result, wasDismissedByTappingOutsideOfPopup, token);
+	}
+
+	private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
+	{
+		Debug.WriteLine(e.Value);
+		if (e.Value)
+		{
+			var radioButton = sender as RadioButton;
+
+			string selectedValue = radioButton?.Value?.ToString();
+
+			Debug.WriteLine($"selected value {selectedValue}");
+
+			string selectedContent = radioButton?.Content?.ToString();
+
+			Debug.WriteLine($"selected Content {selectedContent}");
+
+			viewModel.CurrentEntity.EType = (Model.EntityType)Enum.Parse(typeof(Model.EntityType), selectedContent);
+		}
 	}
 }
 

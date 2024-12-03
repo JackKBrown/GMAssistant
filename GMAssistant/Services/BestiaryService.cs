@@ -19,7 +19,7 @@ public class BestiaryService
 		foreach (var entity in pathfinderBestiaryList)
 		{
 			entity.CurrentHP = entity.MaxHP;
-			entity.EType = EntityType.ENEMY;
+			entity.EType = EntityType.Enemy;
 		}
 		return pathfinderBestiaryList;
 	}

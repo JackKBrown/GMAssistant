@@ -15,6 +15,10 @@ public partial class EncounterViewModel : BaseViewModel
 	GMADatabase db;
 	[ObservableProperty]
 	public Encounter currentEncounter;
+
+	[ObservableProperty]
+	public int modify;
+
 	private readonly IPopupService popupService;
 	public ObservableCollection<Entity> Entities { get; set; } = new();
 	public EncounterViewModel(GMADatabase dataBase, IPopupService popupService)
@@ -22,10 +26,25 @@ public partial class EncounterViewModel : BaseViewModel
 		Title = "Encounters Page";
 		db = dataBase;
 		this.popupService = popupService;
+		modify = 0;
 	}
 
 	[RelayCommand]
-	async Task NewEnitityAsync()
+	public void SubModify(Entity entity)
+	{
+		Debug.WriteLine(Modify);
+		entity.CurrentHP -= Modify;
+	}
+
+	[RelayCommand]
+	public void AddModify(Entity entity)
+	{
+		entity.CurrentHP += Modify;
+		//OnPropertyChanged(nameof(entity.CurrentHP));
+	}
+
+	[RelayCommand]
+	async Task NewEntityAsync()
 	{
 		if (CurrentEncounter == null) { return; }
 		Entity entity = new Entity
@@ -43,10 +62,32 @@ public partial class EncounterViewModel : BaseViewModel
 			Will = 0,
 			Actions = "",
 			EncounterID = CurrentEncounter.ID,
-			EType = EntityType.PLAYER,
+			EType = EntityType.Ally,
 		};
 		await db.SaveEntitysAsync(entity);
 		Entities.Add(entity);
+	}
+
+	[RelayCommand]
+	async Task SaveEntityAsync(Entity entity)
+	{
+		if (CurrentEncounter == null) { return; }
+
+		Entity newEntity = entity.Clone();
+		newEntity.EncounterID = Constants.SavedEncounterID;
+
+		await db.SaveEntitysAsync(newEntity);
+	}
+
+	[RelayCommand]
+	async Task CopyEntityAsync(Entity entity)
+	{
+		if (CurrentEncounter == null) { return; }
+
+		Entity newEntity = entity.Clone();
+
+		await db.SaveEntitysAsync(newEntity);
+		Entities.Add(newEntity);
 	}
 	public async Task GetEntities()
 	{
@@ -112,7 +153,8 @@ public partial class EncounterViewModel : BaseViewModel
 		await popupService.ShowPopupAsync<ExtraInfoViewModel>(onPresenting:
 			ViewModel =>
 			{
-				ViewModel.CurrrentEntity = entity;
+				ViewModel.CurrentEntity = entity;
+				ViewModel.UpdatePostPopulate();
 			});
 		GetEntities();
 	}
@@ -157,6 +199,13 @@ public partial class EncounterViewModel : BaseViewModel
 	{
 		Debug.WriteLine($"current encounter id is {CurrentEncounter.ID}");
 		await Shell.Current.GoToAsync($"{nameof(SelectPremadeEntity)}?encounterid={CurrentEncounter.ID}");
+	}
+
+	[RelayCommand]
+	public async Task GoToSavedEntityAsync()
+	{
+		Debug.WriteLine($"current encounter id is {CurrentEncounter.ID}");
+		await Shell.Current.GoToAsync($"{nameof(SelectSavedEntity)}?encounterid={CurrentEncounter.ID}");
 	}
 
 	Entity lastDraggedOver;

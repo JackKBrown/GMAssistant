@@ -4,6 +4,7 @@ namespace GMAssistant;
 
 public static class Constants
 {
+	public const int SavedEncounterID = -1;
 	public const string DatabaseFilename = "GMASQLite.db3";
 
 	public const SQLite.SQLiteOpenFlags Flags =

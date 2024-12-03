@@ -4,6 +4,7 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="GMAssistant.View.EncounterPage"
              xmlns:viewmodel="clr-namespace:GMAssistant.ViewModel"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:converter="clr-namespace:GMAssistant.Converters"
              xmlns:model="clr-namespace:GMAssistant.Model"
              x:DataType="viewmodel:EncounterViewModel"
@@ -30,56 +31,84 @@
             <CollectionView ItemsSource="{Binding Entities}" VerticalOptions="Fill">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Entity">
-                        <Grid ColumnDefinitions="*,16*,*">
-                            <Frame Style="{StaticResource Card}" Grid.Column="1" 
+                        <SwipeView android:SwipeView.SwipeTransitionMode="Reveal">
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Copy"  CommandParameter="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=CopyEntityCommand}"/>
+                                <SwipeItem Text="Save"  CommandParameter="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=SaveEntityCommand}"/>
+                                <SwipeItem Text="Delete"  CommandParameter="{Binding .}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DeleteEntityCommand}"/>
+                            </SwipeView.RightItems>
+                            <Grid ColumnDefinitions="*,16*,*">
+                                <Frame Style="{StaticResource Card}" Grid.Column="1" 
                                    BackgroundColor="{Binding EType, Converter={StaticResource PlayerTypeConverter}}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                         CommandParameter="{Binding .}"
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=ShowInfoCommand}"/>
-                                    <DragGestureRecognizer 
+                                        <DragGestureRecognizer 
                                         CanDrag="True"
                                         DropCompletedCommandParameter="{Binding .}"
                                         DropCompletedCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DropCommand}"/>
-                                    <DropGestureRecognizer
+                                        <DropGestureRecognizer
                                         DragOverCommandParameter="{Binding .}"
                                         DragOverCommand="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DragOverCommand}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid VerticalOptions="Center">
-                                    <HorizontalStackLayout>
-                                        <VerticalStackLayout>
-                                            <Label Style="{StaticResource LabelSmall}" Text="Init" HorizontalOptions="Center"/>
-                                            <Entry Text="{Binding Initiative}" HorizontalTextAlignment="Center"/>
-                                        </VerticalStackLayout>
-                                        <VerticalStackLayout>
-                                            <Label Style="{StaticResource LabelSmall}" Text="Name" HorizontalOptions="Center"/>
-                                            <Entry Text="{Binding Name}" HorizontalTextAlignment="Center"/>
-                                        </VerticalStackLayout>
-                                        <VerticalStackLayout>
-                                            <Label Style="{StaticResource LabelSmall}" Text="HP" HorizontalOptions="Center"/>
-                                            <Entry Text="{Binding CurrentHP}" HorizontalTextAlignment="Center"/>
-                                        </VerticalStackLayout>
-                                        <Label Text="\" VerticalOptions="Center"/>
-                                        <VerticalStackLayout>
-                                            <Label Style="{StaticResource LabelSmall}" Text="Max HP" HorizontalOptions="Center"/>
-                                            <Entry Text="{Binding MaxHP}" HorizontalTextAlignment="Center"/>
-                                        </VerticalStackLayout>
-                                    </HorizontalStackLayout>
-                                    <ImageButton WidthRequest="50" HeightRequest="50" CornerRadius="5" HorizontalOptions="End"
+                                    </Frame.GestureRecognizers>
+                                    <Grid VerticalOptions="Center">
+                                        <HorizontalStackLayout>
+                                            <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="Init" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding Initiative}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="Name" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding Name}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="HP" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding CurrentHP}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <Label Text="\" VerticalOptions="Center"/>
+                                            <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="Max HP" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding MaxHP}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="Modify" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=Modify}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <Label Text=" + " FontSize="Large">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                    CommandParameter="{Binding .}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=AddModifyCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                            <Label Text=" - " FontSize="Large">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                    CommandParameter="{Binding .}"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=SubModifyCommand}"/>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </HorizontalStackLayout>
+                                        <ImageButton WidthRequest="50" HeightRequest="50" CornerRadius="5" HorizontalOptions="End"
                                              CommandParameter="{Binding .}"
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DeleteEntityCommand}" 
                                             BackgroundColor="#d1001f">
-                                        <ImageButton.Source>
-                                            <FontImageSource
+                                            <ImageButton.Source>
+                                                <FontImageSource
                                                     FontFamily="FASolid"
                                                     Glyph="{StaticResource bin}"
                                                     Color="Black"
                                                     Size="36"/>
-                                        </ImageButton.Source>
-                                    </ImageButton>
-                                </Grid>
-                            </Frame>
-                        </Grid>
+                                            </ImageButton.Source>
+                                        </ImageButton>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -87,50 +116,66 @@
         <HorizontalStackLayout HorizontalOptions="End" VerticalOptions="End" Grid.Row="1">
             <ImageButton Style="{StaticResource CircleIButton}"
                 HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                WidthRequest="50" HeightRequest="50" CornerRadius="25"
                 Command="{Binding RollAllCommand}" 
                 IsEnabled="{Binding IsNotBusy}">
                 <ImageButton.Source>
                     <FontImageSource
                     FontFamily="FASolid"
                     Glyph="{StaticResource dtwenty}"
-                    Color="Black"
-                    Size="36"/>
+                    Color="Black"/>
                 </ImageButton.Source>
             </ImageButton>
             <ImageButton Style="{StaticResource CircleIButton}"
                 HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                WidthRequest="50" HeightRequest="50" CornerRadius="25"
                 Command="{Binding SortEntitiesCommand}" 
                 IsEnabled="{Binding IsNotBusy}">
                 <ImageButton.Source>
                     <FontImageSource
                     FontFamily="FASolid"
                     Glyph="{StaticResource sort}"
-                    Color="Black"
-                    Size="36"/>
+                    Color="Black"/>
                 </ImageButton.Source>
             </ImageButton>
-            <toolkit:Expander Direction="Up">
-                <toolkit:Expander.Header>
-                    <ImageButton Style="{StaticResource CircleIButton}"
-                    HorizontalOptions="Center" VerticalOptions="End" Margin="10">
-                        <ImageButton.Source>
-                            <FontImageSource
-                        FontFamily="FASolid"
-                        Glyph="{StaticResource plus}"
-                        Color="Black"
-                        Size="36"/>
-                        </ImageButton.Source>
-                    </ImageButton>
-                </toolkit:Expander.Header>
-
-                <toolkit:Expander.Content>
-                    <VerticalStackLayout>
-                        <Button Text="New Custom Actor" Command="{Binding NewEnitityCommand}" Margin="5"/>
-                        <Button Text="From Bestiary" Command="{Binding GoToSelectEntityCommand}" Margin="5"/>
-
-                    </VerticalStackLayout>
-                </toolkit:Expander.Content>
-            </toolkit:Expander>
+            <ImageButton Style="{StaticResource CircleIButton}"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                Command="{Binding NewEntityCommand}" 
+                IsEnabled="{Binding IsNotBusy}">
+                <ImageButton.Source>
+                    <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource plus}"
+                    Color="Black"/>
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton Style="{StaticResource CircleIButton}"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                Command="{Binding GoToSelectEntityCommand}" 
+                IsEnabled="{Binding IsNotBusy}">
+                <ImageButton.Source>
+                    <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource user}"
+                    Color="Black"
+                    Size="10"/>
+                </ImageButton.Source>
+            </ImageButton>
+            <ImageButton Style="{StaticResource CircleIButton}"
+                HorizontalOptions="End" VerticalOptions="End" Margin="10"
+                WidthRequest="50" HeightRequest="50" CornerRadius="25"
+                Command="{Binding GoToSavedEntityCommand}" 
+                IsEnabled="{Binding IsNotBusy}">
+                <ImageButton.Source>
+                    <FontImageSource
+                    FontFamily="FASolid"
+                    Glyph="{StaticResource sword}"
+                    Color="Black"
+                    Size="10"/>
+                </ImageButton.Source>
+            </ImageButton>
         </HorizontalStackLayout>
 
     </Grid>
