@@ -17,7 +17,6 @@
                 <Picker ItemsSource="{Binding ShopTypes}" SelectedIndex="{Binding TypeIndex}" Grid.Row="1" Grid.Column="1" ItemDisplayBinding="{Binding Name}"/>
             </Grid>
             <Button Text="Generate Shop" HorizontalOptions="Center" Command="{Binding GenerateShopCommand}"/>
-            <Image Source="Merchant.png" HorizontalOptions="Center"/>
             <CollectionView ItemsSource="{Binding ShopItems}" VerticalOptions="Fill">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Item">

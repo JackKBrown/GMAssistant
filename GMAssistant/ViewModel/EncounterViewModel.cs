@@ -19,6 +19,9 @@ public partial class EncounterViewModel : BaseViewModel
 	[ObservableProperty]
 	public int modify;
 
+	[ObservableProperty]
+	public bool descriptionExpanded;
+
 	private readonly IPopupService popupService;
 	public ObservableCollection<Entity> Entities { get; set; } = new();
 	public EncounterViewModel(GMADatabase dataBase, IPopupService popupService)
@@ -27,20 +30,21 @@ public partial class EncounterViewModel : BaseViewModel
 		db = dataBase;
 		this.popupService = popupService;
 		modify = 0;
+		descriptionExpanded = false;
 	}
 
 	[RelayCommand]
 	public void SubModify(Entity entity)
 	{
-		Debug.WriteLine(Modify);
 		entity.CurrentHP -= Modify;
+		if (entity.CurrentHP < 0) { entity.CurrentHP = 0; }
 	}
 
 	[RelayCommand]
 	public void AddModify(Entity entity)
 	{
 		entity.CurrentHP += Modify;
-		//OnPropertyChanged(nameof(entity.CurrentHP));
+		if (entity.CurrentHP > entity.MaxHP) { entity.CurrentHP = entity.MaxHP; }
 	}
 
 	[RelayCommand]

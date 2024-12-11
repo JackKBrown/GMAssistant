@@ -20,17 +20,28 @@
                                             Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectSavedEntityViewModel}}, Path=SelectedItemCommand}"/>
                             </Frame.GestureRecognizers>
                             <Grid>
-                                <HorizontalStackLayout HorizontalOptions="End">
-                                    <Label Text="{Binding Name}" VerticalOptions="Center"/>
-                                </HorizontalStackLayout>
                                 <HorizontalStackLayout>
-
                                     <VerticalStackLayout >
                                         <Label Text="Level" FontSize="8"/>
                                         <Label Text="{Binding Level}" HorizontalOptions="Center"/>
 
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
+                                <HorizontalStackLayout HorizontalOptions="Center">
+                                    <Label Text="{Binding Name}" VerticalOptions="Center"/>
+                                </HorizontalStackLayout>
+                                <ImageButton WidthRequest="50" HeightRequest="50" CornerRadius="5" HorizontalOptions="End"
+                                             CommandParameter="{Binding .}"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:SelectSavedEntityViewModel}}, Path=DeleteItemCommand}" 
+                                            BackgroundColor="#d1001f">
+                                    <ImageButton.Source>
+                                        <FontImageSource
+                                                    FontFamily="FASolid"
+                                                    Glyph="{StaticResource bin}"
+                                                    Color="Black"
+                                                    Size="36"/>
+                                    </ImageButton.Source>
+                                </ImageButton>
                             </Grid>
                         </Frame>
                     </Grid>

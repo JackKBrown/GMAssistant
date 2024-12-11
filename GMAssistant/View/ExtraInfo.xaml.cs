@@ -39,6 +39,8 @@ public partial class ExtraInfo : Popup
 		}
 	}
 
+	void OnCloseButtonClicked(object? sender, EventArgs e) => Close();
+
 	void OnSelectLoaded(object? sender, EventArgs e)
 	{
 		this.Close();

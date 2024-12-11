@@ -36,9 +36,10 @@ public partial class ShopGeneratorViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	public async Task ViewItemAsync()
+	public async void ViewItem(Item item)
 	{
-		throw new NotImplementedException();
+		Uri uri = new Uri(item.Link);
+		await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
 	}
 
 	[RelayCommand]

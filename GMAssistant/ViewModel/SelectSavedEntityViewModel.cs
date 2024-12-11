@@ -24,7 +24,6 @@ public partial class SelectSavedEntityViewModel : BaseViewModel
 		Title = "Load from Saved";
 		db = database;
 		pService = popupService;
-		GetSavedEntities();
 	}
 
 	[RelayCommand]
@@ -60,5 +59,21 @@ public partial class SelectSavedEntityViewModel : BaseViewModel
 		newEntity.EncounterID = encounterid;
 		await db.SaveEntitysAsync(newEntity);
 		await Shell.Current.GoToAsync("..");
+	}
+
+	[RelayCommand]
+	public async Task DeleteItemAsync(Entity entity)
+	{
+		if (IsBusy) return;
+
+		try
+		{
+			IsBusy = true;
+			_ = await db.DeleteEntityAsync(entity);
+		}
+		catch (Exception ex)
+		{ Debug.WriteLine(ex); }
+		finally
+		{ IsBusy = false; }
 	}
 }

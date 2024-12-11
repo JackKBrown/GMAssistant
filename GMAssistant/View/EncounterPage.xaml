@@ -11,15 +11,17 @@
              Title="{Binding CurrentEncounter.Name}">
     <ContentPage.Resources>
         <converter:PlayerTypeConverter x:Key="PlayerTypeConverter"/>
+        <converter:ExpanderArrowConverter x:Key="ExpanderArrowConverter"/>
     </ContentPage.Resources>
     <Grid RowDefinitions="auto, *">
         <VerticalStackLayout>
-            <toolkit:Expander>
+            <toolkit:Expander IsExpanded="{Binding DescriptionExpanded}">
                 <toolkit:Expander.Header>
-                    <HorizontalStackLayout>
-                        <Label Text="Name: " FontSize="24" VerticalOptions="Center"/>
-                        <Editor Margin="5" FontSize="24" Text="{Binding CurrentEncounter.Name}" VerticalOptions="Center"/>
-                    </HorizontalStackLayout>
+                    <Grid ColumnDefinitions="*,4*,*">
+                        <Label Text="Name: " FontSize="18" VerticalOptions="Center" Grid.Column="0"/>
+                        <Editor Margin="5" FontSize="18" Text="{Binding CurrentEncounter.Name}" VerticalOptions="Center" AutoSize="TextChanges" Grid.Column="1"/>
+                        <Label Text="{Binding DescriptionExpanded, Converter={StaticResource ExpanderArrowConverter}}" FontSize="24" VerticalOptions="Center" Grid.Column="2" HorizontalOptions="Center"/>
+                    </Grid>
                 </toolkit:Expander.Header>
                 <toolkit:Expander.Content>
                     <Editor Margin="5" AutoSize="TextChanges" Placeholder="Description" Text="{Binding CurrentEncounter.Description}"/>
@@ -33,11 +35,11 @@
                     <DataTemplate x:DataType="model:Entity">
                         <SwipeView android:SwipeView.SwipeTransitionMode="Reveal">
                             <SwipeView.RightItems>
-                                <SwipeItem Text="Copy"  CommandParameter="{Binding .}"
+                                <SwipeItem Text="Copy"  CommandParameter="{Binding .}" BackgroundColor="BlueViolet"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=CopyEntityCommand}"/>
-                                <SwipeItem Text="Save"  CommandParameter="{Binding .}"
+                                <SwipeItem Text="Save"  CommandParameter="{Binding .}" BackgroundColor="LightGreen"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=SaveEntityCommand}"/>
-                                <SwipeItem Text="Delete"  CommandParameter="{Binding .}"
+                                <SwipeItem Text="Delete"  CommandParameter="{Binding .}" BackgroundColor="red"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DeleteEntityCommand}"/>
                             </SwipeView.RightItems>
                             <Grid ColumnDefinitions="*,16*,*">
@@ -66,13 +68,17 @@
                                                 <Entry Text="{Binding Name}" HorizontalTextAlignment="Center"/>
                                             </VerticalStackLayout>
                                             <VerticalStackLayout>
+                                                <Label Style="{StaticResource LabelSmall}" Text="AC" HorizontalOptions="Center"/>
+                                                <Entry Text="{Binding AC}" HorizontalTextAlignment="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout>
                                                 <Label Style="{StaticResource LabelSmall}" Text="HP" HorizontalOptions="Center"/>
                                                 <Entry Text="{Binding CurrentHP}" HorizontalTextAlignment="Center"/>
                                             </VerticalStackLayout>
                                             <Label Text="\" VerticalOptions="Center"/>
                                             <VerticalStackLayout>
                                                 <Label Style="{StaticResource LabelSmall}" Text="Max HP" HorizontalOptions="Center"/>
-                                                <Entry Text="{Binding MaxHP}" HorizontalTextAlignment="Center"/>
+                                                <Entry Text="{Binding MaxHP}" HorizontalTextAlignment="Center" />
                                             </VerticalStackLayout>
                                             <VerticalStackLayout>
                                                 <Label Style="{StaticResource LabelSmall}" Text="Modify" HorizontalOptions="Center"/>
@@ -93,18 +99,7 @@
                                                 </Label.GestureRecognizers>
                                             </Label>
                                         </HorizontalStackLayout>
-                                        <ImageButton WidthRequest="50" HeightRequest="50" CornerRadius="5" HorizontalOptions="End"
-                                             CommandParameter="{Binding .}"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EncounterViewModel}}, Path=DeleteEntityCommand}" 
-                                            BackgroundColor="#d1001f">
-                                            <ImageButton.Source>
-                                                <FontImageSource
-                                                    FontFamily="FASolid"
-                                                    Glyph="{StaticResource bin}"
-                                                    Color="Black"
-                                                    Size="36"/>
-                                            </ImageButton.Source>
-                                        </ImageButton>
+                                        <Label Text="&#60;" HorizontalOptions="End" VerticalOptions="Center" FontSize="Large"/>
                                     </Grid>
                                 </Frame>
                             </Grid>

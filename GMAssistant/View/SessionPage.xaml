@@ -6,16 +6,17 @@
              xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              xmlns:model="clr-namespace:GMAssistant.Model"
              x:DataType="viewmodel:SessionViewModel"
-             Title="{Binding CurrentSession.Name}">
+             Title="Session">
     <Grid >
         <ScrollView>
             <VerticalStackLayout Padding="5">
-            <HorizontalStackLayout >
-                <Label Text="Name: " FontSize="24"/>
-                <Editor Margin="5" FontSize="24" Text="{Binding CurrentSession.Name}"/>
-            </HorizontalStackLayout>
-            <Label Text="Description: " FontSize="24"/>
-            <Editor Margin="5" Text="{Binding CurrentSession.Description}"/>
+                <Grid ColumnDefinitions="*,4*"  RowDefinitions="auto, auto">
+                    <Label Text="Name: " FontSize="18" VerticalOptions="Center" Grid.Column="0"/>
+                    <Editor Margin="5" FontSize="18" Text="{Binding CurrentSession.Name}" VerticalOptions="Center" AutoSize="TextChanges" Grid.Column="1"/>
+                    <Label Text="Description: " FontSize="18" VerticalOptions="Center" Grid.Column="0" Grid.Row="1"/>
+                    <Editor Margin="5" FontSize="18" Text="{Binding CurrentSession.Description}" VerticalOptions="Center" AutoSize="TextChanges" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+                <Line X2="{Binding Width, Source={RelativeSource Self}}" HorizontalOptions="Fill" StrokeThickness="2" Stroke="Gray" />
                 <CollectionView ItemsSource="{Binding Encounters}" VerticalOptions="Fill">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Encounter">

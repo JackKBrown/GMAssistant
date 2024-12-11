@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using GMAssistant.Model;
 using GMAssistant.Services;
-using System.Diagnostics;
 
 namespace GMAssistant.ViewModel;
 
@@ -15,7 +14,8 @@ public class EntInt
 
 public partial class ExtraInfoViewModel : BaseViewModel
 {
-
+	[ObservableProperty]
+	public bool enableBrowser;
 
 	GMADatabase database;
 
@@ -44,14 +44,17 @@ public partial class ExtraInfoViewModel : BaseViewModel
 				IsChecked = false
 			});
 		}
+		EnableBrowser = false;
 	}
 
 	public void UpdatePostPopulate()
 	{
-		Debug.Write(CurrentEntity.Name);
-		Debug.Write((int)CurrentEntity.EType);
 		EntInt selected = EntityOptions.Where(i => i.Value == (int)CurrentEntity.EType).FirstOrDefault();
 		selected.IsChecked = true;
+		if (!String.IsNullOrEmpty(CurrentEntity.Link))
+		{
+			EnableBrowser = true;
+		}
 	}
 
 	public event EventHandler<EventArgs> Finished
@@ -61,15 +64,22 @@ public partial class ExtraInfoViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
+	public async Task ClosedAsync()
+	{
+		await SaveChangesAsync();
+		finishedEventManager.HandleEvent(this, EventArgs.Empty, nameof(Finished));
+	}
+
+	[RelayCommand]
 	public async Task SaveChangesAsync()
 	{
-		await database.SaveEntitysAsync(currentEntity);
+		await database.SaveEntitysAsync(CurrentEntity);
 	}
 
 	[RelayCommand]
 	public async Task DeleteEntityAsync()
 	{
-		await database.DeleteEntityAsync(currentEntity);
+		await database.DeleteEntityAsync(CurrentEntity);
 		finishedEventManager.HandleEvent(this, EventArgs.Empty, nameof(Finished));
 	}
 	[RelayCommand]
@@ -77,6 +87,12 @@ public partial class ExtraInfoViewModel : BaseViewModel
 	{
 		Random rnd = new Random();
 		currentEntity.Initiative = rnd.Next(1, 21) + currentEntity.Perception;
+	}
+	[RelayCommand]
+	public async void ViewMonster()
+	{
+		Uri uri = new Uri(CurrentEntity.Link);
+		await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
 	}
 
 }

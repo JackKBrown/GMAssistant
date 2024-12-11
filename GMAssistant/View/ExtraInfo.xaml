@@ -21,7 +21,6 @@
         </Border.StrokeShape>
         <Grid>
             <VerticalStackLayout>
-                
                 <VerticalStackLayout Padding="5" x:Name="InfoStack">
                     <HorizontalStackLayout Padding="2">
                         <Label Text="Name: " VerticalOptions="Center"/>
@@ -70,11 +69,16 @@
                         </CollectionView.ItemTemplate>
                     </CollectionView>
             </VerticalStackLayout>
+            <HorizontalStackLayout Padding="2" VerticalOptions="Start" HorizontalOptions="End">
+                <Button Text="x" FontSize="Large" Command="{Binding ClosedCommand}" BackgroundColor="Transparent" BorderColor="Transparent"/>
+            </HorizontalStackLayout>
             <HorizontalStackLayout Padding="2" VerticalOptions="End" HorizontalOptions="Center">
                 <Button Text="Reroll Initiative"
                         Command="{Binding RollInitCommand}"/>
                 <Button Text="Delete "
                         Command="{Binding DeleteEntityCommand}"/>
+                <Button Text="Open In Browser"
+                        Command="{Binding ViewMonsterCommand}" IsEnabled="{Binding EnableBrowser}"/>
             </HorizontalStackLayout>
         </Grid>
     </Border>

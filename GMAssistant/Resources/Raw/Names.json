@@ -645,12 +645,6 @@
 		"Ancestry": "Dwarven"
 	},
 	{
-		"Name": null,
-		"Fli": "Svala",
-		"Position": 1,
-		"Ancestry": "Dwarven"
-	},
-	{
 		"Name": "Flintfist",
 		"Position": 2,
 		"Ancestry": "Dwarven"
@@ -724,5 +718,715 @@
 		"Name": "Sarrasri",
 		"Position": 2,
 		"Ancestry": "Human"
+	},
+	{
+		"Name": "Elric",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Valemont",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Isolde",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Ravengarde",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Gareth",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Harrowby",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Annika",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Silvermere",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Tristan",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Winterstone",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Rosamund",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Fairbourne",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Luther",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Thornfield",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Evelyn",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Blackthorn",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Rowan",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Brackenridge",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Marion",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Wildehart",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Alaric",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Stonebrook",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Cecily",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Evermore",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Theodore",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Hearthwood",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Beatrice",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Whitespire",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Cedric",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Ashgrove",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Matilda",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Brightwood",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Godfrey",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Ironridge",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Helena",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Snowveil",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Arthur",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Ravenshade",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Vivienne",
+		"Position": 1,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Foxglove",
+		"Position": 2,
+		"Ancestry": "Human"
+	},
+	{
+		"Name": "Grizzle",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Snaggletooth",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Muck",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Fungusmash",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Sprock",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Cogsqueak",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Drip",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Slimefoot",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Skritch",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Bonegnash",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Thrum",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Spindlefang",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Zrik",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Ashsnout",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Krogg",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Filthwhisker",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Zaz",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Shinshatter",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Grub",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Grotcatcher",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Fizz",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Scrapsnout",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Twig",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Brimstink",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Vug",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Muckwhistle",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Fleck",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Ditchmuck",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Grin",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Bogfizzle",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Drek",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Rustbelly",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Skag",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Grogsplinter",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Grunk",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Scrapeclaw",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Zop",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Shardspike",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Mog",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Crustsnap",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Zink",
+		"Position": 1,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Snarlgut",
+		"Position": 2,
+		"Ancestry": "Goblin"
+	},
+	{
+		"Name": "Aelar",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Silverleaf",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Sylwen",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Moonwhisper",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Kaelen",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Starshade",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Lorien",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Duskfall",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Eryndor",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Shadowbough",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Faelara",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Willowheart",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Ithilwen",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Nightgrove",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Thalion",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Brightbloom",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Aeryn",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Oakenvale",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Caladhel",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Whisperwind",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Elandrial",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Gladesong",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Anarion",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Silverwisp",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Luthien",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Everbrook",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Tauriel",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Fernhaven",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Elion",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Mistwood",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Arannis",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Greenleaf",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Nimue",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Dewsong",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Thalindra",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Rainsilver",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Eryndir",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Moonvale",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Serindel",
+		"Position": 1,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Starlake",
+		"Position": 2,
+		"Ancestry": "Elven"
+	},
+	{
+		"Name": "Ignivor",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Flametongue",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Cyradros",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Gleamheart",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Aqualis",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Stormscale",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Verdanith",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Leafwhisper",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Nihzara",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Shadowfang",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Celsaryth",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Moonwing",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Pyrrath",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Wavebreaker",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Umbradrel",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Darkveil",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Thyrran",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Frostbreath",
+		"Position": 2,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Sablefire",
+		"Position": 1,
+		"Ancestry": "Dragon"
+	},
+	{
+		"Name": "Ironwing",
+		"Position": 2,
+		"Ancestry": "Dragon"
 	}
 ]

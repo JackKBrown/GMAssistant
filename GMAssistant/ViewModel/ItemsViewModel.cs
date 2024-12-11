@@ -82,6 +82,13 @@ namespace GMAssistant.ViewModel
 		}
 
 		[RelayCommand]
+		public async void ViewItem(Item item)
+		{
+			Uri uri = new Uri(item.Link);
+			await Browser.Default.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
+		}
+
+		[RelayCommand]
 		public void GetNextItems()
 		{
 			Debug.WriteLine("getting next items");

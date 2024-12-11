@@ -101,6 +101,7 @@ namespace GMAssistant.Services
 			Debug.WriteLine($"Encounter ID is {ID}");
 			return await Database.QueryAsync<Entity>("select * from Entity where EncounterID=?", ID);
 		}
+
 		//ENTITY
 		public async Task<List<Entity>> GetEntitysAsync()
 		{

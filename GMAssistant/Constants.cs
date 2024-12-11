@@ -22,20 +22,50 @@ public static class Constants
 	public static List<ShopType> ShopTypes = new List<ShopType>{
 		new ShopType()
 		{
-			Name = "General",
+			Name = "All",
 			Tags = new List<string>() {},
 			Image = "image.png"
 		},
 		new ShopType()
 		{
+			Name = "General",
+			Tags = new List<string>() {"Adventuring Gear", "Trade Goods", "Animals and Gear","Materials", "Snares"},
+			Image = "image.png"
+		},
+		new ShopType()
+		{
+			Name = "Hunter",
+			Tags = new List<string>() {"Animals and Gear","Materials", "Snares"},
+			Image = "image.png"
+		},
+		new ShopType()
+		{
 			Name = "Blacksmith",
-			Tags = new List<string>() {"Armor", "Shields", "Runes", "Siege Weapons", "Weapons" },
+			Tags = new List<string>() {"Armor", "Shields", "Runes", "Siege Weapons", "Weapons", "Consumables", "Customizations" },
 			Image = "image.png"
 		},
 		new ShopType()
 		{
 			Name = "Magic",
-			Tags = new List<string>() {"Runes", "Wands", "Tattoos", "Spellhearts", "Wands", "Staves", "Grimoires" },
+			Tags = new List<string>() {"Runes", "Wands", "Tattoos", "Spellhearts", "Staves", "Grimoires", "Grafts", "Held Items", "Worn Items" },
+			Image = "image.png"
+		},
+		new ShopType()
+		{
+			Name = "Apothecary",
+			Tags = new List<string>() { "Alchemical Items", "Consumables"},
+			Image = "image.png"
+		},
+		new ShopType()
+		{
+			Name = "Runesmith",
+			Tags = new List<string>() {"Runes", "Tattoos", "Adjustments" },
+			Image = "image.png"
+		},
+		new ShopType()
+		{
+			Name = "Esoterica",
+			Tags = new List<string>() { "Cursed Items", "Tattoos", "Spellhearts", "Artifacts", "Assistive Items", "Held Items", "Other", "Relics"},
 			Image = "image.png"
 		},
 	};

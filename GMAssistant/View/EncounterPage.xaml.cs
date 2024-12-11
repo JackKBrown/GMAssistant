@@ -1,4 +1,5 @@
 using GMAssistant.ViewModel;
+using System.Diagnostics;
 
 namespace GMAssistant.View;
 
@@ -30,4 +31,11 @@ public partial class EncounterPage : ContentPage
 		ViewModel.SortEntities();
 	}
 
+	private void MaxHP_Updated(object sender, EventArgs e)
+	{
+		Debug.WriteLine(sender);
+		Debug.WriteLine(sender.ToString());
+
+		//ViewModel.MaxHPUpdated();
+	}
 }
